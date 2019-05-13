@@ -1,0 +1,582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		85818BEE22899FD600E70642 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818BED22899FD600E70642 /* AppDelegate.swift */; };
+		85818BF022899FD600E70642 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818BEF22899FD600E70642 /* ViewController.swift */; };
+		85818BF222899FD700E70642 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85818BF122899FD700E70642 /* Assets.xcassets */; };
+		85818BF522899FD700E70642 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85818BF322899FD700E70642 /* Main.storyboard */; };
+		85818C0122899FD700E70642 /* TouchBarLeagueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818C0022899FD700E70642 /* TouchBarLeagueTests.swift */; };
+		85818C0C22899FD700E70642 /* TouchBarLeagueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818C0B22899FD700E70642 /* TouchBarLeagueUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		85818BFD22899FD700E70642 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85818BE222899FD600E70642 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 85818BE922899FD600E70642;
+			remoteInfo = TouchBarLeague;
+		};
+		85818C0822899FD700E70642 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85818BE222899FD600E70642 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 85818BE922899FD600E70642;
+			remoteInfo = TouchBarLeague;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		85818BEA22899FD600E70642 /* TouchBarLeague.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchBarLeague.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		85818BED22899FD600E70642 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		85818BEF22899FD600E70642 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		85818BF122899FD700E70642 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		85818BF422899FD700E70642 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		85818BF622899FD700E70642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85818BF722899FD700E70642 /* TouchBarLeague.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TouchBarLeague.entitlements; sourceTree = "<group>"; };
+		85818BFC22899FD700E70642 /* TouchBarLeagueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouchBarLeagueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		85818C0022899FD700E70642 /* TouchBarLeagueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchBarLeagueTests.swift; sourceTree = "<group>"; };
+		85818C0222899FD700E70642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85818C0722899FD700E70642 /* TouchBarLeagueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouchBarLeagueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		85818C0B22899FD700E70642 /* TouchBarLeagueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchBarLeagueUITests.swift; sourceTree = "<group>"; };
+		85818C0D22899FD700E70642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		85818BE722899FD600E70642 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85818BF922899FD700E70642 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85818C0422899FD700E70642 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		85818BE122899FD600E70642 = {
+			isa = PBXGroup;
+			children = (
+				85818BEC22899FD600E70642 /* TouchBarLeague */,
+				85818BFF22899FD700E70642 /* TouchBarLeagueTests */,
+				85818C0A22899FD700E70642 /* TouchBarLeagueUITests */,
+				85818BEB22899FD600E70642 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		85818BEB22899FD600E70642 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				85818BEA22899FD600E70642 /* TouchBarLeague.app */,
+				85818BFC22899FD700E70642 /* TouchBarLeagueTests.xctest */,
+				85818C0722899FD700E70642 /* TouchBarLeagueUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		85818BEC22899FD600E70642 /* TouchBarLeague */ = {
+			isa = PBXGroup;
+			children = (
+				85818BED22899FD600E70642 /* AppDelegate.swift */,
+				85818BEF22899FD600E70642 /* ViewController.swift */,
+				85818BF122899FD700E70642 /* Assets.xcassets */,
+				85818BF322899FD700E70642 /* Main.storyboard */,
+				85818BF622899FD700E70642 /* Info.plist */,
+				85818BF722899FD700E70642 /* TouchBarLeague.entitlements */,
+			);
+			path = TouchBarLeague;
+			sourceTree = "<group>";
+		};
+		85818BFF22899FD700E70642 /* TouchBarLeagueTests */ = {
+			isa = PBXGroup;
+			children = (
+				85818C0022899FD700E70642 /* TouchBarLeagueTests.swift */,
+				85818C0222899FD700E70642 /* Info.plist */,
+			);
+			path = TouchBarLeagueTests;
+			sourceTree = "<group>";
+		};
+		85818C0A22899FD700E70642 /* TouchBarLeagueUITests */ = {
+			isa = PBXGroup;
+			children = (
+				85818C0B22899FD700E70642 /* TouchBarLeagueUITests.swift */,
+				85818C0D22899FD700E70642 /* Info.plist */,
+			);
+			path = TouchBarLeagueUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		85818BE922899FD600E70642 /* TouchBarLeague */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85818C1022899FD700E70642 /* Build configuration list for PBXNativeTarget "TouchBarLeague" */;
+			buildPhases = (
+				85818BE622899FD600E70642 /* Sources */,
+				85818BE722899FD600E70642 /* Frameworks */,
+				85818BE822899FD600E70642 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TouchBarLeague;
+			productName = TouchBarLeague;
+			productReference = 85818BEA22899FD600E70642 /* TouchBarLeague.app */;
+			productType = "com.apple.product-type.application";
+		};
+		85818BFB22899FD700E70642 /* TouchBarLeagueTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85818C1322899FD700E70642 /* Build configuration list for PBXNativeTarget "TouchBarLeagueTests" */;
+			buildPhases = (
+				85818BF822899FD700E70642 /* Sources */,
+				85818BF922899FD700E70642 /* Frameworks */,
+				85818BFA22899FD700E70642 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				85818BFE22899FD700E70642 /* PBXTargetDependency */,
+			);
+			name = TouchBarLeagueTests;
+			productName = TouchBarLeagueTests;
+			productReference = 85818BFC22899FD700E70642 /* TouchBarLeagueTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		85818C0622899FD700E70642 /* TouchBarLeagueUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85818C1622899FD700E70642 /* Build configuration list for PBXNativeTarget "TouchBarLeagueUITests" */;
+			buildPhases = (
+				85818C0322899FD700E70642 /* Sources */,
+				85818C0422899FD700E70642 /* Frameworks */,
+				85818C0522899FD700E70642 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				85818C0922899FD700E70642 /* PBXTargetDependency */,
+			);
+			name = TouchBarLeagueUITests;
+			productName = TouchBarLeagueUITests;
+			productReference = 85818C0722899FD700E70642 /* TouchBarLeagueUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		85818BE222899FD600E70642 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Marcin Slusarek";
+				TargetAttributes = {
+					85818BE922899FD600E70642 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					85818BFB22899FD700E70642 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 85818BE922899FD600E70642;
+					};
+					85818C0622899FD700E70642 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 85818BE922899FD600E70642;
+					};
+				};
+			};
+			buildConfigurationList = 85818BE522899FD600E70642 /* Build configuration list for PBXProject "TouchBarLeague" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 85818BE122899FD600E70642;
+			productRefGroup = 85818BEB22899FD600E70642 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				85818BE922899FD600E70642 /* TouchBarLeague */,
+				85818BFB22899FD700E70642 /* TouchBarLeagueTests */,
+				85818C0622899FD700E70642 /* TouchBarLeagueUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		85818BE822899FD600E70642 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85818BF222899FD700E70642 /* Assets.xcassets in Resources */,
+				85818BF522899FD700E70642 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85818BFA22899FD700E70642 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85818C0522899FD700E70642 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		85818BE622899FD600E70642 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85818BF022899FD600E70642 /* ViewController.swift in Sources */,
+				85818BEE22899FD600E70642 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85818BF822899FD700E70642 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85818C0122899FD700E70642 /* TouchBarLeagueTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85818C0322899FD700E70642 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85818C0C22899FD700E70642 /* TouchBarLeagueUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		85818BFE22899FD700E70642 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 85818BE922899FD600E70642 /* TouchBarLeague */;
+			targetProxy = 85818BFD22899FD700E70642 /* PBXContainerItemProxy */;
+		};
+		85818C0922899FD700E70642 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 85818BE922899FD600E70642 /* TouchBarLeague */;
+			targetProxy = 85818C0822899FD700E70642 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		85818BF322899FD700E70642 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				85818BF422899FD700E70642 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		85818C0E22899FD700E70642 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		85818C0F22899FD700E70642 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		85818C1122899FD700E70642 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TouchBarLeague/TouchBarLeague.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A4RSAW4A69;
+				INFOPLIST_FILE = TouchBarLeague/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nylon.TouchBarLeague;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		85818C1222899FD700E70642 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TouchBarLeague/TouchBarLeague.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A4RSAW4A69;
+				INFOPLIST_FILE = TouchBarLeague/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nylon.TouchBarLeague;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		85818C1422899FD700E70642 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A4RSAW4A69;
+				INFOPLIST_FILE = TouchBarLeagueTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nylon.TouchBarLeagueTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TouchBarLeague.app/Contents/MacOS/TouchBarLeague";
+			};
+			name = Debug;
+		};
+		85818C1522899FD700E70642 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A4RSAW4A69;
+				INFOPLIST_FILE = TouchBarLeagueTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nylon.TouchBarLeagueTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TouchBarLeague.app/Contents/MacOS/TouchBarLeague";
+			};
+			name = Release;
+		};
+		85818C1722899FD700E70642 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A4RSAW4A69;
+				INFOPLIST_FILE = TouchBarLeagueUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nylon.TouchBarLeagueUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = TouchBarLeague;
+			};
+			name = Debug;
+		};
+		85818C1822899FD700E70642 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A4RSAW4A69;
+				INFOPLIST_FILE = TouchBarLeagueUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nylon.TouchBarLeagueUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = TouchBarLeague;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		85818BE522899FD600E70642 /* Build configuration list for PBXProject "TouchBarLeague" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85818C0E22899FD700E70642 /* Debug */,
+				85818C0F22899FD700E70642 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		85818C1022899FD700E70642 /* Build configuration list for PBXNativeTarget "TouchBarLeague" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85818C1122899FD700E70642 /* Debug */,
+				85818C1222899FD700E70642 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		85818C1322899FD700E70642 /* Build configuration list for PBXNativeTarget "TouchBarLeagueTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85818C1422899FD700E70642 /* Debug */,
+				85818C1522899FD700E70642 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		85818C1622899FD700E70642 /* Build configuration list for PBXNativeTarget "TouchBarLeagueUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85818C1722899FD700E70642 /* Debug */,
+				85818C1822899FD700E70642 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 85818BE222899FD600E70642 /* Project object */;
+}
