@@ -14,10 +14,9 @@
 		85818BF522899FD700E70642 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85818BF322899FD700E70642 /* Main.storyboard */; };
 		85818C0122899FD700E70642 /* TouchBarLeagueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818C0022899FD700E70642 /* TouchBarLeagueTests.swift */; };
 		85818C0C22899FD700E70642 /* TouchBarLeagueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818C0B22899FD700E70642 /* TouchBarLeagueUITests.swift */; };
-		85818C1C228ACA0300E70642 /* TouchBarHelper.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85818C1A228ACA0300E70642 /* TouchBarHelper.xib */; };
-		85818C21228AD58A00E70642 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85818C1E228AD58900E70642 /* Info.plist */; };
 		8593C6A7228B53BB00F4AA75 /* TouchBarHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */; };
 		8593C6A8228B53BB00F4AA75 /* TouchBarHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8593C6AC228B6A6600F4AA75 /* RequestWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593C6AB228B6A6600F4AA75 /* RequestWrapper.swift */; };
 		B2ECE158D508B9EF7F23713D /* Pods_TouchBarLeague.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BC088CBA89587605E70875 /* Pods_TouchBarLeague.framework */; };
 		C80A6B0262EDD3DD76E16937 /* Pods_TouchBarLeagueUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7473325D1F777D00A603B5F1 /* Pods_TouchBarLeagueUITests.framework */; };
 		ECE0D22AC75B8A948BAF2F2D /* Pods_TouchBarLeagueTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512717E366FE530F95094672 /* Pods_TouchBarLeagueTests.framework */; };
@@ -74,8 +73,7 @@
 		85818C0722899FD700E70642 /* TouchBarLeagueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouchBarLeagueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		85818C0B22899FD700E70642 /* TouchBarLeagueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchBarLeagueUITests.swift; sourceTree = "<group>"; };
 		85818C0D22899FD700E70642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		85818C1A228ACA0300E70642 /* TouchBarHelper.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TouchBarHelper.xib; sourceTree = "<group>"; };
-		85818C1E228AD58900E70642 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../../../Downloads/TouchBarHelper-master/TouchBarHelper/Info.plist"; sourceTree = "<group>"; };
+		8593C6AB228B6A6600F4AA75 /* RequestWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestWrapper.swift; sourceTree = "<group>"; };
 		9417FC60A6E310F3C8454534 /* Pods-TouchBarLeagueTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchBarLeagueTests.debug.xcconfig"; path = "Target Support Files/Pods-TouchBarLeagueTests/Pods-TouchBarLeagueTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B1F77D77753105CE9136D2E7 /* Pods-TouchBarLeagueUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchBarLeagueUITests.release.xcconfig"; path = "Target Support Files/Pods-TouchBarLeagueUITests/Pods-TouchBarLeagueUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D739B05275DEF3C36004A275 /* Pods-TouchBarLeagueUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchBarLeagueUITests.debug.xcconfig"; path = "Target Support Files/Pods-TouchBarLeagueUITests/Pods-TouchBarLeagueUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,7 +120,6 @@
 				D739B05275DEF3C36004A275 /* Pods-TouchBarLeagueUITests.debug.xcconfig */,
 				B1F77D77753105CE9136D2E7 /* Pods-TouchBarLeagueUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -164,12 +161,11 @@
 			children = (
 				85818BED22899FD600E70642 /* AppDelegate.swift */,
 				85818BEF22899FD600E70642 /* ViewController.swift */,
+				8593C6AA228B6A6600F4AA75 /* Network */,
 				85818BF122899FD700E70642 /* Assets.xcassets */,
 				85818BF322899FD700E70642 /* Main.storyboard */,
 				85818BF622899FD700E70642 /* Info.plist */,
-				85818C1E228AD58900E70642 /* Info.plist */,
 				85818BF722899FD700E70642 /* TouchBarLeague.entitlements */,
-				85818C1A228ACA0300E70642 /* TouchBarHelper.xib */,
 			);
 			path = TouchBarLeague;
 			sourceTree = "<group>";
@@ -192,6 +188,15 @@
 			path = TouchBarLeagueUITests;
 			sourceTree = "<group>";
 		};
+		8593C6AA228B6A6600F4AA75 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				8593C6AB228B6A6600F4AA75 /* RequestWrapper.swift */,
+			);
+			name = Network;
+			path = "../../../runes-reforged/RForged/Sources/Network";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -204,6 +209,7 @@
 				85818BE722899FD600E70642 /* Frameworks */,
 				85818BE822899FD600E70642 /* Resources */,
 				8593C6A9228B53BB00F4AA75 /* Embed Frameworks */,
+				3DA94EC670DD8A035423CE69 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -300,9 +306,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85818C21228AD58A00E70642 /* Info.plist in Resources */,
 				85818BF222899FD700E70642 /* Assets.xcassets in Resources */,
-				85818C1C228ACA0300E70642 /* TouchBarHelper.xib in Resources */,
 				85818BF522899FD700E70642 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +328,38 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3DA94EC670DD8A035423CE69 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TouchBarLeague/Pods-TouchBarLeague-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TouchBarLeague/Pods-TouchBarLeague-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		556AA734232EBF5D55A80949 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -398,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85818BF022899FD600E70642 /* ViewController.swift in Sources */,
+				8593C6AC228B6A6600F4AA75 /* RequestWrapper.swift in Sources */,
 				85818BEE22899FD600E70642 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

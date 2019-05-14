@@ -6,6 +6,11 @@ target 'TouchBarLeague' do
   use_frameworks!
 
   # Pods for TouchBarLeague
+  pod 'Alamofire', '~> 5.0.0-beta.5'
+  pod 'SwiftyJSON', '~> 4.0'
+  pod 'ObjectMapper', '~> 3.4'
+  pod 'RxSwift', '~> 5'
+  pod 'RxCocoa', '~> 5'
 
   target 'TouchBarLeagueTests' do
     inherit! :search_paths

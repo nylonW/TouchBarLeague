@@ -18,8 +18,8 @@ private let kGroupIdentifier = NSTouchBarItem.Identifier("io.a2.Group")
 class ViewController: NSViewController, NSTouchBarDelegate {
 
     let findLolPathCommand = "ps x -o comm= | grep 'LeagueClientUx$'"
-    let findLol = ["ps", "x", "-o comm= | grep 'LeagueClientUx$'"]
     
+    var lolPath: String?
     var groupTouchBar = NSTouchBar()
     
     var groupTouchBarA: NSTouchBar {
@@ -31,6 +31,16 @@ class ViewController: NSViewController, NSTouchBarDelegate {
         return self.groupTouchBar
     }
     
+    fileprivate func authenticateLcu() {
+        lolPath = "\(shell(findLolPathCommand))"
+        lolPath = lolPath?.components(separatedBy: "/RADS")[0]
+        let lockfile = shell("head \"\(lolPath ?? "")/lockfile\"")
+        print(lockfile)
+        let credentials = lockfile.split(separator: ":")
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,8 +50,8 @@ class ViewController: NSViewController, NSTouchBarDelegate {
         panda.view = NSButton(title: "🤬", target: self, action: #selector(self.present(_:)))
         NSTouchBarItem.addSystemTrayItem(panda)
         DFRElementSetControlStripPresenceForIdentifier(kPandaIdentifier, true)
-        print(shell(findLolPathCommand))
-        // Do any additional setup after loading the view.
+        
+        authenticateLcu()
     }
 
     override var representedObject: Any? {
