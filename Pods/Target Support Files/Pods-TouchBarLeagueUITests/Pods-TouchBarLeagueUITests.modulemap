@@ -1,0 +1,6 @@
+framework module Pods_TouchBarLeagueUITests {
+  umbrella header "Pods-TouchBarLeagueUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

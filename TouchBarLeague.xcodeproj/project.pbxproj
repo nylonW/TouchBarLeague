@@ -18,6 +18,9 @@
 		85818C21228AD58A00E70642 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85818C1E228AD58900E70642 /* Info.plist */; };
 		8593C6A7228B53BB00F4AA75 /* TouchBarHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */; };
 		8593C6A8228B53BB00F4AA75 /* TouchBarHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B2ECE158D508B9EF7F23713D /* Pods_TouchBarLeague.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BC088CBA89587605E70875 /* Pods_TouchBarLeague.framework */; };
+		C80A6B0262EDD3DD76E16937 /* Pods_TouchBarLeagueUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7473325D1F777D00A603B5F1 /* Pods_TouchBarLeagueUITests.framework */; };
+		ECE0D22AC75B8A948BAF2F2D /* Pods_TouchBarLeagueTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512717E366FE530F95094672 /* Pods_TouchBarLeagueTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		086F9EDC060365440BB9DCD2 /* Pods-TouchBarLeague.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchBarLeague.debug.xcconfig"; path = "Target Support Files/Pods-TouchBarLeague/Pods-TouchBarLeague.debug.xcconfig"; sourceTree = "<group>"; };
+		512717E366FE530F95094672 /* Pods_TouchBarLeagueTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TouchBarLeagueTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		54BC4D55E093A2D09A601F88 /* Pods-TouchBarLeagueTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchBarLeagueTests.release.xcconfig"; path = "Target Support Files/Pods-TouchBarLeagueTests/Pods-TouchBarLeagueTests.release.xcconfig"; sourceTree = "<group>"; };
+		59BC088CBA89587605E70875 /* Pods_TouchBarLeague.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TouchBarLeague.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7473325D1F777D00A603B5F1 /* Pods_TouchBarLeagueUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TouchBarLeagueUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TouchBarHelper.framework; path = System/Library/PrivateFrameworks/TouchBarHelper.framework; sourceTree = SDKROOT; };
 		85818BEA22899FD600E70642 /* TouchBarLeague.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchBarLeague.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85818BED22899FD600E70642 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +76,10 @@
 		85818C0D22899FD700E70642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85818C1A228ACA0300E70642 /* TouchBarHelper.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TouchBarHelper.xib; sourceTree = "<group>"; };
 		85818C1E228AD58900E70642 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../../../Downloads/TouchBarHelper-master/TouchBarHelper/Info.plist"; sourceTree = "<group>"; };
+		9417FC60A6E310F3C8454534 /* Pods-TouchBarLeagueTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchBarLeagueTests.debug.xcconfig"; path = "Target Support Files/Pods-TouchBarLeagueTests/Pods-TouchBarLeagueTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B1F77D77753105CE9136D2E7 /* Pods-TouchBarLeagueUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchBarLeagueUITests.release.xcconfig"; path = "Target Support Files/Pods-TouchBarLeagueUITests/Pods-TouchBarLeagueUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D739B05275DEF3C36004A275 /* Pods-TouchBarLeagueUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchBarLeagueUITests.debug.xcconfig"; path = "Target Support Files/Pods-TouchBarLeagueUITests/Pods-TouchBarLeagueUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FA67AD21CAC60B7CC6D3A359 /* Pods-TouchBarLeague.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchBarLeague.release.xcconfig"; path = "Target Support Files/Pods-TouchBarLeague/Pods-TouchBarLeague.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +89,7 @@
 			files = (
 				8593C6A7228B53BB00F4AA75 /* TouchBarHelper.framework in Frameworks */,
 				85408AA3228B4D3100B958D7 /* TouchBarHelper.framework in Frameworks */,
+				B2ECE158D508B9EF7F23713D /* Pods_TouchBarLeague.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECE0D22AC75B8A948BAF2F2D /* Pods_TouchBarLeagueTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,16 +105,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C80A6B0262EDD3DD76E16937 /* Pods_TouchBarLeagueUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C78A9773C8E589232BE2DF9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				086F9EDC060365440BB9DCD2 /* Pods-TouchBarLeague.debug.xcconfig */,
+				FA67AD21CAC60B7CC6D3A359 /* Pods-TouchBarLeague.release.xcconfig */,
+				9417FC60A6E310F3C8454534 /* Pods-TouchBarLeagueTests.debug.xcconfig */,
+				54BC4D55E093A2D09A601F88 /* Pods-TouchBarLeagueTests.release.xcconfig */,
+				D739B05275DEF3C36004A275 /* Pods-TouchBarLeagueUITests.debug.xcconfig */,
+				B1F77D77753105CE9136D2E7 /* Pods-TouchBarLeagueUITests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		85408AA1228B4D3100B958D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */,
+				59BC088CBA89587605E70875 /* Pods_TouchBarLeague.framework */,
+				512717E366FE530F95094672 /* Pods_TouchBarLeagueTests.framework */,
+				7473325D1F777D00A603B5F1 /* Pods_TouchBarLeagueUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -113,6 +145,7 @@
 				85818C0A22899FD700E70642 /* TouchBarLeagueUITests */,
 				85818BEB22899FD600E70642 /* Products */,
 				85408AA1228B4D3100B958D7 /* Frameworks */,
+				4C78A9773C8E589232BE2DF9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +199,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 85818C1022899FD700E70642 /* Build configuration list for PBXNativeTarget "TouchBarLeague" */;
 			buildPhases = (
+				FE5E5C23D1035D050CE51DC3 /* [CP] Check Pods Manifest.lock */,
 				85818BE622899FD600E70642 /* Sources */,
 				85818BE722899FD600E70642 /* Frameworks */,
 				85818BE822899FD600E70642 /* Resources */,
@@ -184,6 +218,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 85818C1322899FD700E70642 /* Build configuration list for PBXNativeTarget "TouchBarLeagueTests" */;
 			buildPhases = (
+				556AA734232EBF5D55A80949 /* [CP] Check Pods Manifest.lock */,
 				85818BF822899FD700E70642 /* Sources */,
 				85818BF922899FD700E70642 /* Frameworks */,
 				85818BFA22899FD700E70642 /* Resources */,
@@ -202,6 +237,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 85818C1622899FD700E70642 /* Build configuration list for PBXNativeTarget "TouchBarLeagueUITests" */;
 			buildPhases = (
+				A9DC9A58C441BD40C3BD1B61 /* [CP] Check Pods Manifest.lock */,
 				85818C0322899FD700E70642 /* Sources */,
 				85818C0422899FD700E70642 /* Frameworks */,
 				85818C0522899FD700E70642 /* Resources */,
@@ -286,6 +322,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		556AA734232EBF5D55A80949 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TouchBarLeagueTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9DC9A58C441BD40C3BD1B61 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TouchBarLeagueUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE5E5C23D1035D050CE51DC3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TouchBarLeague-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		85818BE622899FD600E70642 /* Sources */ = {
@@ -457,6 +562,7 @@
 		};
 		85818C1122899FD700E70642 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 086F9EDC060365440BB9DCD2 /* Pods-TouchBarLeague.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TouchBarLeague/TouchBarLeague.entitlements;
@@ -482,6 +588,7 @@
 		};
 		85818C1222899FD700E70642 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA67AD21CAC60B7CC6D3A359 /* Pods-TouchBarLeague.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TouchBarLeague/TouchBarLeague.entitlements;
@@ -507,6 +614,7 @@
 		};
 		85818C1422899FD700E70642 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9417FC60A6E310F3C8454534 /* Pods-TouchBarLeagueTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -528,6 +636,7 @@
 		};
 		85818C1522899FD700E70642 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54BC4D55E093A2D09A601F88 /* Pods-TouchBarLeagueTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -549,6 +658,7 @@
 		};
 		85818C1722899FD700E70642 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D739B05275DEF3C36004A275 /* Pods-TouchBarLeagueUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -569,6 +679,7 @@
 		};
 		85818C1822899FD700E70642 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1F77D77753105CE9136D2E7 /* Pods-TouchBarLeagueUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
