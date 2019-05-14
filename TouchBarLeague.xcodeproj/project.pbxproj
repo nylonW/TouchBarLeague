@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85408AA3228B4D3100B958D7 /* TouchBarHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */; };
 		85818BEE22899FD600E70642 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818BED22899FD600E70642 /* AppDelegate.swift */; };
 		85818BF022899FD600E70642 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818BEF22899FD600E70642 /* ViewController.swift */; };
 		85818BF222899FD700E70642 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85818BF122899FD700E70642 /* Assets.xcassets */; };
 		85818BF522899FD700E70642 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85818BF322899FD700E70642 /* Main.storyboard */; };
 		85818C0122899FD700E70642 /* TouchBarLeagueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818C0022899FD700E70642 /* TouchBarLeagueTests.swift */; };
 		85818C0C22899FD700E70642 /* TouchBarLeagueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818C0B22899FD700E70642 /* TouchBarLeagueUITests.swift */; };
+		85818C1C228ACA0300E70642 /* TouchBarHelper.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85818C1A228ACA0300E70642 /* TouchBarHelper.xib */; };
+		85818C21228AD58A00E70642 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85818C1E228AD58900E70642 /* Info.plist */; };
+		8593C6A7228B53BB00F4AA75 /* TouchBarHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */; };
+		8593C6A8228B53BB00F4AA75 /* TouchBarHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +37,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8593C6A9228B53BB00F4AA75 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8593C6A8228B53BB00F4AA75 /* TouchBarHelper.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TouchBarHelper.framework; path = System/Library/PrivateFrameworks/TouchBarHelper.framework; sourceTree = SDKROOT; };
 		85818BEA22899FD600E70642 /* TouchBarLeague.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchBarLeague.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85818BED22899FD600E70642 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85818BEF22899FD600E70642 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +66,8 @@
 		85818C0722899FD700E70642 /* TouchBarLeagueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouchBarLeagueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		85818C0B22899FD700E70642 /* TouchBarLeagueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchBarLeagueUITests.swift; sourceTree = "<group>"; };
 		85818C0D22899FD700E70642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85818C1A228ACA0300E70642 /* TouchBarHelper.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TouchBarHelper.xib; sourceTree = "<group>"; };
+		85818C1E228AD58900E70642 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../../../Downloads/TouchBarHelper-master/TouchBarHelper/Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8593C6A7228B53BB00F4AA75 /* TouchBarHelper.framework in Frameworks */,
+				85408AA3228B4D3100B958D7 /* TouchBarHelper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +97,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85408AA1228B4D3100B958D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		85818BE122899FD600E70642 = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +112,7 @@
 				85818BFF22899FD700E70642 /* TouchBarLeagueTests */,
 				85818C0A22899FD700E70642 /* TouchBarLeagueUITests */,
 				85818BEB22899FD600E70642 /* Products */,
+				85408AA1228B4D3100B958D7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,7 +134,9 @@
 				85818BF122899FD700E70642 /* Assets.xcassets */,
 				85818BF322899FD700E70642 /* Main.storyboard */,
 				85818BF622899FD700E70642 /* Info.plist */,
+				85818C1E228AD58900E70642 /* Info.plist */,
 				85818BF722899FD700E70642 /* TouchBarLeague.entitlements */,
+				85818C1A228ACA0300E70642 /* TouchBarHelper.xib */,
 			);
 			path = TouchBarLeague;
 			sourceTree = "<group>";
@@ -134,6 +169,7 @@
 				85818BE622899FD600E70642 /* Sources */,
 				85818BE722899FD600E70642 /* Frameworks */,
 				85818BE822899FD600E70642 /* Resources */,
+				8593C6A9228B53BB00F4AA75 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -228,7 +264,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85818C21228AD58A00E70642 /* Info.plist in Resources */,
 				85818BF222899FD700E70642 /* Assets.xcassets in Resources */,
+				85818C1C228ACA0300E70642 /* TouchBarHelper.xib in Resources */,
 				85818BF522899FD700E70642 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,10 +467,16 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/PrivateFrameworks,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nylon.TouchBarLeague;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/PrivateFrameworks,
+				);
 			};
 			name = Debug;
 		};
@@ -448,10 +492,16 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/PrivateFrameworks,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nylon.TouchBarLeague;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/PrivateFrameworks,
+				);
 			};
 			name = Release;
 		};
