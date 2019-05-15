@@ -21,6 +21,8 @@ class ViewController: NSViewController, NSTouchBarDelegate {
 
     //MARK: - Properties
     
+    @IBOutlet weak var detectingLabel: NSTextField!
+    
     var groupTouchBar = NSTouchBar()
     
     var groupTouchBarA: NSTouchBar {
@@ -42,17 +44,26 @@ class ViewController: NSViewController, NSTouchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTouchBar()
+        print(LCU.shared)
+        
+        if LCU.shared.detected {
+            detectingLabel.stringValue = "LoLClient detected"
+        } else {
+            detectingLabel.stringValue = "Couldn't detect LoLClient"
+        }
+    }
+    
+    //MARK: - Handlers
+  
+    fileprivate func setupTouchBar() {
         DFRSystemModalShowsCloseBoxWhenFrontMost(true)
         
         let panda = NSCustomTouchBarItem(identifier: kPandaIdentifier)
         panda.view = NSButton(title: "🤬", target: self, action: #selector(self.present(_:)))
         NSTouchBarItem.addSystemTrayItem(panda)
         DFRElementSetControlStripPresenceForIdentifier(kPandaIdentifier, true)
-        print(LCU.shared)
     }
-    
-    //MARK: - Handlers
-  
     
     func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
         if identifier == kBearIdentifier {

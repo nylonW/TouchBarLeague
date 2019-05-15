@@ -329,6 +329,11 @@
 				TargetAttributes = {
 					85818BE922899FD600E70642 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					85818BFB22899FD700E70642 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -665,7 +670,6 @@
 			baseConfigurationReference = 086F9EDC060365440BB9DCD2 /* Pods-TouchBarLeague.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = TouchBarLeague/TouchBarLeague.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -694,7 +698,6 @@
 			baseConfigurationReference = FA67AD21CAC60B7CC6D3A359 /* Pods-TouchBarLeague.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = TouchBarLeague/TouchBarLeague.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;

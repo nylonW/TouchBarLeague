@@ -12,10 +12,11 @@ import ObjectMapper
 
 class LCU {
     
-    let findLolPathCommand = "ps x -o comm= | grep 'LeagueClientUx$'"
+    let findLolPathCommand = "ps x -o comm= | grep 'LeagueClientUx'"
     var lolPath: String?
     var summonerId: Int?
     var summonerDisplayName: String?
+    var detected = false
     
     static let shared = LCU()
     
@@ -33,7 +34,7 @@ class LCU {
         if lockfile == "" {
             return
         }
-        
+        detected = true
         let credentials = lockfile.split(separator: ":")
         let header = "Basic \("riot:\(credentials[3])".toBase64())"
         let acceptHeader = HTTPHeader(name: "Accept", value: "application/json")
@@ -41,8 +42,6 @@ class LCU {
         print(header)
         
         RequestWrapper.requestGETURL(Constants.endpoints.getCurrentSummoner(withPort: String(credentials[2])), headers: headers, success: { (JSONResponse) in
-            
-            
             if let summoner = Mapper<CurrentSummoner>().map(JSONString: JSONResponse) {
                 guard let summonerId = summoner.summonerId else { return }
                 self.summonerId = summonerId

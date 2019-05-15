@@ -15,7 +15,7 @@ extension String {
     
     func shell() -> String{
         let task = Process()
-        task.launchPath = "/bin/bash"
+        task.launchPath = "/bin/bash/"
         task.arguments = ["-c", self]
         
         let pipe = Pipe()
