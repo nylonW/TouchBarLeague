@@ -82,7 +82,9 @@ class ViewController: NSViewController, NSTouchBarDelegate {
             panda.view = NSButton(title: "🥺", target: self, action: #selector(self.bear(_:)))
             return panda
         } else {
-            return nil
+            let perkButton = NSCustomTouchBarItem(identifier: identifier)
+            perkButton.view = NSButton(title: "\(identifier)", target: self, action: #selector(self.bear(_:)))
+            return perkButton
         }
     }
     
@@ -110,9 +112,9 @@ class ViewController: NSViewController, NSTouchBarDelegate {
             NSTouchBar.dismissSystemModalFunctionBar(self.groupTouchBar)
         }
         if #available(macOS 10.14, *) {
-            NSTouchBar.presentSystemModalTouchBar(self.groupTouchBarA, systemTrayItemIdentifier: kPandaIdentifier)
+            NSTouchBar.presentSystemModalTouchBar(touchBar, systemTrayItemIdentifier: kPandaIdentifier)
         } else {
-            NSTouchBar.presentSystemModalFunctionBar(self.groupTouchBarA, systemTrayItemIdentifier: kPandaIdentifier)
+            NSTouchBar.presentSystemModalFunctionBar(touchBar, systemTrayItemIdentifier: kPandaIdentifier)
         }
     }
     
@@ -120,11 +122,11 @@ class ViewController: NSViewController, NSTouchBarDelegate {
         RequestWrapper.requestGETURL(Constants.endpoints.getRunehashFromAPI(id: id), success: { (JSONResponse) in
             if let champion = Mapper<Champion1vs9>().mapArray(JSONString: JSONResponse) {
                 print(champion[0].highestCountRuneHash ?? "Failed to download runes")
+                self.reloadTouchBar(self.runeTouchBar(champion[0].highestCountRuneHash ?? ""))
             }
         }, failure: { (error) in
             print(error)
         })
-        reloadTouchBar(self.groupTouchBarA)
     }
     
     func runeTouchBar(_ runehash: String) -> NSTouchBar {
