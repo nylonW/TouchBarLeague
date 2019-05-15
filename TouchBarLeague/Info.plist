@@ -26,6 +26,20 @@
 	<string>Copyright © 2019 Marcin Slusarek. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>NSAllowsArbitraryLoads</key>
+			<string>YES</string>
+			<key>NSIncludesSubdomains</key>
+			<string>YES</string>
+			<key>NSExceptionAllowsInsecureHTTPLoads</key>
+			<string>YES</string>
+			<key>NSExceptionRequiresForwardSecrecy</key>
+			<string>NO</string>
+		</dict>
+	</dict>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

@@ -10,6 +10,8 @@ import Cocoa
 import Foundation
 import AppKit
 import TouchBarHelper
+import ObjectMapper
+import Alamofire
 
 private let kBearIdentifier = NSTouchBarItem.Identifier("io.a2.Bear")
 private let kPandaIdentifier = NSTouchBarItem.Identifier("io.a2.Panda")
@@ -37,7 +39,20 @@ class ViewController: NSViewController, NSTouchBarDelegate {
         let lockfile = shell("head \"\(lolPath ?? "")/lockfile\"")
         print(lockfile)
         let credentials = lockfile.split(separator: ":")
-        
+        let header = "Basic \("riot:\(credentials[3])".toBase64())"
+        let acceptHeader = HTTPHeader(name: "Accept", value: "application/json")
+        let headers = HTTPHeaders([HTTPHeader(name: "Authorization", value: header), acceptHeader])
+        print(header)
+        //62621
+        RequestWrapper.requestGETURL(Constants.endpoints.getCurrentSummoner(withPort: String(credentials[2])), headers: headers, success: { (JSONResponse) in
+            print("success")
+            if let summoner = Mapper<CurrentSummoner>().map(JSONString: JSONResponse) {
+                print(summoner.summonerId!)
+            }
+        }, failure: { (error) in
+            print("failed...")
+            print(error)
+        })
         
     }
     
