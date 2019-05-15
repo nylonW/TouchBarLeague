@@ -83,7 +83,12 @@ class ViewController: NSViewController, NSTouchBarDelegate {
             return panda
         } else {
             let perkButton = NSCustomTouchBarItem(identifier: identifier)
-            perkButton.view = NSButton(title: "\(identifier)", target: self, action: #selector(self.bear(_:)))
+            perkButton.view = NSButton(title: "\(identifier.rawValue)", target: self, action: #selector(self.bear(_:)))
+            let imageview = NSImageView()
+            imageview.image = NSImage(named: "\(identifier.rawValue)")?.resized(to: CGSize(width: 30, height: 30))
+            imageview.frame.size.width = 30
+            imageview.frame.size.height = 30
+            perkButton.view = imageview
             return perkButton
         }
     }
@@ -133,7 +138,7 @@ class ViewController: NSViewController, NSTouchBarDelegate {
         let groupTouchBar = NSTouchBar()
         let perks = runehash.split(separator: "-")
         
-        let perksIdentifiers = perks.map { NSTouchBarItem.Identifier(String($0)) }
+        let perksIdentifiers = perks.map { NSTouchBarItem.Identifier(String($0)) }.orderedSet
         
         groupTouchBar.defaultItemIdentifiers = perksIdentifiers
         groupTouchBar.delegate = self
