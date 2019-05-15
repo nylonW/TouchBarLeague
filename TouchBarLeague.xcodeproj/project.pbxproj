@@ -165,12 +165,8 @@
 		85818BEC22899FD600E70642 /* TouchBarLeague */ = {
 			isa = PBXGroup;
 			children = (
-				8593C6B6228B788F00F4AA75 /* Network */,
 				85818BED22899FD600E70642 /* AppDelegate.swift */,
-				85818BEF22899FD600E70642 /* ViewController.swift */,
-				85818BF122899FD700E70642 /* Assets.xcassets */,
-				85818BF322899FD700E70642 /* Main.storyboard */,
-				85818BF622899FD700E70642 /* Info.plist */,
+				8593C6BB228C85CE00F4AA75 /* Sources */,
 				85818BF722899FD700E70642 /* TouchBarLeague.entitlements */,
 				8593C6B3228B740900F4AA75 /* Helpers */,
 				8593C6AD228B6EA600F4AA75 /* Model */,
@@ -208,6 +204,8 @@
 		8593C6B0228B6F3F00F4AA75 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				85818BF622899FD700E70642 /* Info.plist */,
+				85818BF122899FD700E70642 /* Assets.xcassets */,
 				8593C6B1228B6F5F00F4AA75 /* Constants.swift */,
 			);
 			path = "Supporting Files";
@@ -227,6 +225,24 @@
 				8593C6B7228B78A900F4AA75 /* RequestWrapper.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		8593C6BB228C85CE00F4AA75 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				8593C6BC228C85DD00F4AA75 /* Home */,
+				8593C6B6228B788F00F4AA75 /* Network */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		8593C6BC228C85DD00F4AA75 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				85818BF322899FD700E70642 /* Main.storyboard */,
+				85818BEF22899FD600E70642 /* ViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

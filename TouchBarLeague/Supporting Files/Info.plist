@@ -30,6 +30,8 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>NSAllowsLocalNetworking</key>
+			<string>YES</string>
 			<key>NSAllowsArbitraryLoads</key>
 			<string>YES</string>
 			<key>NSIncludesSubdomains</key>
