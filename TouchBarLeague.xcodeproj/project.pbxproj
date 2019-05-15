@@ -18,8 +18,9 @@
 		8593C6A8228B53BB00F4AA75 /* TouchBarHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8593C6AF228B6ED700F4AA75 /* CurrentSummoner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593C6AE228B6ED700F4AA75 /* CurrentSummoner.swift */; };
 		8593C6B2228B6F5F00F4AA75 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593C6B1228B6F5F00F4AA75 /* Constants.swift */; };
-		8593C6B5228B742A00F4AA75 /* String+Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593C6B4228B742A00F4AA75 /* String+Authentication.swift */; };
+		8593C6B5228B742A00F4AA75 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593C6B4228B742A00F4AA75 /* String+Extensions.swift */; };
 		8593C6B8228B78A900F4AA75 /* RequestWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593C6B7228B78A900F4AA75 /* RequestWrapper.swift */; };
+		8593C6BF228C86DB00F4AA75 /* LCU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593C6BE228C86DB00F4AA75 /* LCU.swift */; };
 		B2ECE158D508B9EF7F23713D /* Pods_TouchBarLeague.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BC088CBA89587605E70875 /* Pods_TouchBarLeague.framework */; };
 		C80A6B0262EDD3DD76E16937 /* Pods_TouchBarLeagueUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7473325D1F777D00A603B5F1 /* Pods_TouchBarLeagueUITests.framework */; };
 		ECE0D22AC75B8A948BAF2F2D /* Pods_TouchBarLeagueTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512717E366FE530F95094672 /* Pods_TouchBarLeagueTests.framework */; };
@@ -78,8 +79,9 @@
 		85818C0D22899FD700E70642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8593C6AE228B6ED700F4AA75 /* CurrentSummoner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSummoner.swift; sourceTree = "<group>"; };
 		8593C6B1228B6F5F00F4AA75 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		8593C6B4228B742A00F4AA75 /* String+Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Authentication.swift"; sourceTree = "<group>"; };
+		8593C6B4228B742A00F4AA75 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		8593C6B7228B78A900F4AA75 /* RequestWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestWrapper.swift; sourceTree = "<group>"; };
+		8593C6BE228C86DB00F4AA75 /* LCU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCU.swift; sourceTree = "<group>"; };
 		9417FC60A6E310F3C8454534 /* Pods-TouchBarLeagueTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchBarLeagueTests.debug.xcconfig"; path = "Target Support Files/Pods-TouchBarLeagueTests/Pods-TouchBarLeagueTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B1F77D77753105CE9136D2E7 /* Pods-TouchBarLeagueUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchBarLeagueUITests.release.xcconfig"; path = "Target Support Files/Pods-TouchBarLeagueUITests/Pods-TouchBarLeagueUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D739B05275DEF3C36004A275 /* Pods-TouchBarLeagueUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchBarLeagueUITests.debug.xcconfig"; path = "Target Support Files/Pods-TouchBarLeagueUITests/Pods-TouchBarLeagueUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -214,7 +216,7 @@
 		8593C6B3228B740900F4AA75 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				8593C6B4228B742A00F4AA75 /* String+Authentication.swift */,
+				8593C6B4228B742A00F4AA75 /* String+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -230,6 +232,7 @@
 		8593C6BB228C85CE00F4AA75 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				8593C6BD228C86C800F4AA75 /* Shared */,
 				8593C6BC228C85DD00F4AA75 /* Home */,
 				8593C6B6228B788F00F4AA75 /* Network */,
 			);
@@ -243,6 +246,14 @@
 				85818BEF22899FD600E70642 /* ViewController.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		8593C6BD228C86C800F4AA75 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				8593C6BE228C86DB00F4AA75 /* LCU.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -484,8 +495,9 @@
 				8593C6B2228B6F5F00F4AA75 /* Constants.swift in Sources */,
 				8593C6B8228B78A900F4AA75 /* RequestWrapper.swift in Sources */,
 				85818BF022899FD600E70642 /* ViewController.swift in Sources */,
-				8593C6B5228B742A00F4AA75 /* String+Authentication.swift in Sources */,
+				8593C6B5228B742A00F4AA75 /* String+Extensions.swift in Sources */,
 				85818BEE22899FD600E70642 /* AppDelegate.swift in Sources */,
+				8593C6BF228C86DB00F4AA75 /* LCU.swift in Sources */,
 				8593C6AF228B6ED700F4AA75 /* CurrentSummoner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -654,17 +666,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TouchBarLeague/TouchBarLeague.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = A4RSAW4A69;
-				INFOPLIST_FILE = TouchBarLeague/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TouchBarLeague/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/PrivateFrameworks,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nylon.TouchBarLeague;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -680,17 +695,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TouchBarLeague/TouchBarLeague.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = A4RSAW4A69;
-				INFOPLIST_FILE = TouchBarLeague/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TouchBarLeague/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/PrivateFrameworks,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nylon.TouchBarLeague;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
