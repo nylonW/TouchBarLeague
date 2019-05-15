@@ -12,9 +12,11 @@ import AppKit
 import TouchBarHelper
 import ObjectMapper
 import Alamofire
+import RxSwift
+import RxCocoa
 
-private let kBearIdentifier = NSTouchBarItem.Identifier("io.a2.Bear")
-private let kPandaIdentifier = NSTouchBarItem.Identifier("io.a2.Panda")
+private let kSummonerNameIdentifier = NSTouchBarItem.Identifier("item.summonerName")
+private let kPandaIdentifier = NSTouchBarItem.Identifier("item.")
 private let kGroupIdentifier = NSTouchBarItem.Identifier("io.a2.Group")
 
 class ViewController: NSViewController, NSTouchBarDelegate {
@@ -23,11 +25,13 @@ class ViewController: NSViewController, NSTouchBarDelegate {
     
     @IBOutlet weak var detectingLabel: NSTextField!
     
+    var currentTouchBarItem: NSCustomTouchBarItem?
+    
     var groupTouchBar = NSTouchBar()
     
     var groupTouchBarA: NSTouchBar {
         let groupTouchBar = NSTouchBar()
-        groupTouchBar.defaultItemIdentifiers = [kBearIdentifier, kPandaIdentifier]
+        groupTouchBar.defaultItemIdentifiers = [kSummonerNameIdentifier, kPandaIdentifier]
         groupTouchBar.delegate = self
         self.groupTouchBar = groupTouchBar
         
@@ -60,15 +64,18 @@ class ViewController: NSViewController, NSTouchBarDelegate {
         DFRSystemModalShowsCloseBoxWhenFrontMost(true)
         
         let panda = NSCustomTouchBarItem(identifier: kPandaIdentifier)
+        currentTouchBarItem = panda
         panda.view = NSButton(title: "🤬", target: self, action: #selector(self.present(_:)))
         NSTouchBarItem.addSystemTrayItem(panda)
+        
         DFRElementSetControlStripPresenceForIdentifier(kPandaIdentifier, true)
     }
-    
+    //        NSTouchBarItem.removeSystemTrayItem(currentTouchBarItem)
+
     func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
-        if identifier == kBearIdentifier {
-            let bear = NSCustomTouchBarItem(identifier: kBearIdentifier)
-            bear.view = NSButton(title: "🙃", target: self, action: #selector(self.bear(_:)))
+        if identifier == kSummonerNameIdentifier {
+            let bear = NSCustomTouchBarItem(identifier: kSummonerNameIdentifier)
+            bear.view = NSButton(title: LCU.shared.summonerDisplayName ?? "Login to league", target: self, action: #selector(self.bear(_:)))
             return bear
         } else if (identifier == kPandaIdentifier) {
             let panda = NSCustomTouchBarItem(identifier: kPandaIdentifier)
@@ -92,5 +99,45 @@ class ViewController: NSViewController, NSTouchBarDelegate {
     }
     
     
+    @IBAction func loadRunesToTouchBar(_ sender: Any) {
+        setTouchBarRunes(for: 517)
+    }
+    
+    fileprivate func reloadTouchBar(_ touchBar: NSTouchBar) {
+        if #available(OSX 10.14, *) {
+            NSTouchBar.dismissSystemModalTouchBar(self.groupTouchBar)
+        } else {
+            NSTouchBar.dismissSystemModalFunctionBar(self.groupTouchBar)
+        }
+        if #available(macOS 10.14, *) {
+            NSTouchBar.presentSystemModalTouchBar(self.groupTouchBarA, systemTrayItemIdentifier: kPandaIdentifier)
+        } else {
+            NSTouchBar.presentSystemModalFunctionBar(self.groupTouchBarA, systemTrayItemIdentifier: kPandaIdentifier)
+        }
+    }
+    
+    func setTouchBarRunes(for id: Int) {
+        RequestWrapper.requestGETURL(Constants.endpoints.getRunehashFromAPI(id: id), success: { (JSONResponse) in
+            if let champion = Mapper<Champion1vs9>().mapArray(JSONString: JSONResponse) {
+                print(champion[0].highestCountRuneHash ?? "Failed to download runes")
+            }
+        }, failure: { (error) in
+            print(error)
+        })
+        reloadTouchBar(self.groupTouchBarA)
+    }
+    
+    func runeTouchBar(_ runehash: String) -> NSTouchBar {
+        let groupTouchBar = NSTouchBar()
+        let perks = runehash.split(separator: "-")
+        
+        let perksIdentifiers = perks.map { NSTouchBarItem.Identifier(String($0)) }
+        
+        groupTouchBar.defaultItemIdentifiers = perksIdentifiers
+        groupTouchBar.delegate = self
+        self.groupTouchBar = groupTouchBar
+        
+        return self.groupTouchBar
+    }
 }
 

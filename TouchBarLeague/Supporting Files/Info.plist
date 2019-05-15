@@ -28,18 +28,25 @@
 	<string>Main</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>1vs9.net</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>NSAllowsLocalNetworking</key>
-			<string>YES</string>
-			<key>NSAllowsArbitraryLoads</key>
-			<string>YES</string>
+			<true/>
 			<key>NSIncludesSubdomains</key>
-			<string>YES</string>
+			<true/>
 			<key>NSExceptionAllowsInsecureHTTPLoads</key>
-			<string>YES</string>
+			<true/>
 			<key>NSExceptionRequiresForwardSecrecy</key>
-			<string>NO</string>
+			<false/>
 		</dict>
 	</dict>
 	<key>NSPrincipalClass</key>

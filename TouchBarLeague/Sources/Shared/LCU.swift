@@ -51,7 +51,7 @@ class LCU {
                 self.summonerDisplayName = summonerDisplayName
                 print(summonerDisplayName)
                 
-                print("successfully get current summoner")
+                print("Successfully get current summoner")
             }
         }, failure: { (error) in
             print("failed...")

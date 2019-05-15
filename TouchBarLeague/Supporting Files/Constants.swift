@@ -13,5 +13,9 @@ class Constants {
         public static func getCurrentSummoner(withPort port: String) -> String {
             return "https://127.0.0.1:\(port)/lol-summoner/v1/current-summoner"
         }
+        
+        public static func getRunehashFromAPI(id championId: Int) -> String {
+            return "http://1vs9.net:8080/LOLAPI/rest/runehash?id=\(championId)"
+        }
     }
 }
