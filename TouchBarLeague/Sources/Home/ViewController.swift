@@ -83,8 +83,8 @@ class ViewController: NSViewController, NSTouchBarDelegate, WebSocketDelegate {
         
         let basic = "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())"
         let login = "riot:\(LCU.shared.riotPassword ?? "")"
-        var request = URLRequest(url: URL(string: "https://127.0.0.1:\(LCU.shared.port ?? "")/")!)
-        request.timeoutInterval = 5
+        var request = URLRequest(url: URL(string: "wss://127.0.0.1:\(LCU.shared.port ?? "")/")!)
+        //request.timeoutInterval = 5
         request.setValue(basic, forHTTPHeaderField: "Authorization")
         print()
         
