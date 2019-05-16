@@ -15,6 +15,7 @@
 		85818BF522899FD700E70642 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85818BF322899FD700E70642 /* Main.storyboard */; };
 		85818C0122899FD700E70642 /* TouchBarLeagueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818C0022899FD700E70642 /* TouchBarLeagueTests.swift */; };
 		85818C0C22899FD700E70642 /* TouchBarLeagueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818C0B22899FD700E70642 /* TouchBarLeagueUITests.swift */; };
+		8582ED44228D82D800F0049A /* MyTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8582ED43228D82D800F0049A /* MyTeam.swift */; };
 		8593C6A7228B53BB00F4AA75 /* TouchBarHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */; };
 		8593C6A8228B53BB00F4AA75 /* TouchBarHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8593C6AF228B6ED700F4AA75 /* CurrentSummoner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593C6AE228B6ED700F4AA75 /* CurrentSummoner.swift */; };
@@ -80,6 +81,7 @@
 		85818C0722899FD700E70642 /* TouchBarLeagueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouchBarLeagueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		85818C0B22899FD700E70642 /* TouchBarLeagueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchBarLeagueUITests.swift; sourceTree = "<group>"; };
 		85818C0D22899FD700E70642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8582ED43228D82D800F0049A /* MyTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeam.swift; sourceTree = "<group>"; };
 		8593C6AE228B6ED700F4AA75 /* CurrentSummoner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSummoner.swift; sourceTree = "<group>"; };
 		8593C6B1228B6F5F00F4AA75 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8593C6B4228B742A00F4AA75 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				8593C6AE228B6ED700F4AA75 /* CurrentSummoner.swift */,
 				8593C6C0228CC6C900F4AA75 /* Champion1vs9.swift */,
+				8582ED43228D82D800F0049A /* MyTeam.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 			files = (
 				8593C6B2228B6F5F00F4AA75 /* Constants.swift in Sources */,
 				8593C6B8228B78A900F4AA75 /* RequestWrapper.swift in Sources */,
+				8582ED44228D82D800F0049A /* MyTeam.swift in Sources */,
 				85818BF022899FD600E70642 /* ViewController.swift in Sources */,
 				8593C6B5228B742A00F4AA75 /* String+Extensions.swift in Sources */,
 				85818BEE22899FD600E70642 /* AppDelegate.swift in Sources */,

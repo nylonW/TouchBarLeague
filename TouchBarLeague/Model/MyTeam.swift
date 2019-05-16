@@ -1,0 +1,25 @@
+//
+//  MyTeam.swift
+//  TouchBarLeague
+//
+//  Created by Marcin Slusarek on 16/05/2019.
+//  Copyright © 2019 Marcin Slusarek. All rights reserved.
+//
+
+import Foundation
+import ObjectMapper
+
+class MyTeam: Mappable {
+    
+    var summonerId: Int?
+    var championId: Int?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        championId <- map["championId"]
+        summonerId <- map["summonerId"]
+    }
+}
