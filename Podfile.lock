@@ -7,6 +7,9 @@ PODS:
   - RxRelay (5.0.0):
     - RxSwift (~> 5)
   - RxSwift (5.0.0)
+  - Socket.IO-Client-Swift (15.0.0):
+    - Starscream (~> 3.1)
+  - Starscream (3.1.0)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
@@ -14,6 +17,7 @@ DEPENDENCIES:
   - ObjectMapper (~> 3.4)
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
+  - Socket.IO-Client-Swift (~> 15.0.0)
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
@@ -23,6 +27,8 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - Socket.IO-Client-Swift
+    - Starscream
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -31,8 +37,10 @@ SPEC CHECKSUMS:
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  Socket.IO-Client-Swift: c039a808195d22a7192962841b8c035cb61ea49e
+  Starscream: 08172b481e145289c4930cb567230fb55897cfa4
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 66d67d0a1841db68803a98f0b19002f4cbdb6790
+PODFILE CHECKSUM: da9e920209947b88bb2292b1ecaada54d9df8923
 
 COCOAPODS: 1.6.1

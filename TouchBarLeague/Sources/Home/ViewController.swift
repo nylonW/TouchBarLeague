@@ -14,21 +14,44 @@ import ObjectMapper
 import Alamofire
 import RxSwift
 import RxCocoa
+import Starscream
 
 private let kSummonerNameIdentifier = NSTouchBarItem.Identifier("item.summonerName")
 private let kPandaIdentifier = NSTouchBarItem.Identifier("item.")
 private let kGroupIdentifier = NSTouchBarItem.Identifier("io.a2.Group")
 
-class ViewController: NSViewController, NSTouchBarDelegate {
+class ViewController: NSViewController, NSTouchBarDelegate, WebSocketDelegate {
+    
+    func websocketDidConnect(socket: WebSocketClient) {
+        print("WebSocket connected")
+    }
+    
+    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+        print("WebSocket disconnected")
+        print(error)
+
+    }
+    
+    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+        print("WebSocket receives a message")
+        print(text)
+
+    }
+    
+    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
+        print("WebSocket receives a data")
+
+    }
+    
 
     //MARK: - Properties
     
     @IBOutlet weak var detectingLabel: NSTextField!
     
+    var socket: WebSocket?
+    
     var currentTouchBarItem: NSCustomTouchBarItem?
-    
     var groupTouchBar = NSTouchBar()
-    
     var groupTouchBarA: NSTouchBar {
         let groupTouchBar = NSTouchBar()
         groupTouchBar.defaultItemIdentifiers = [kSummonerNameIdentifier, kPandaIdentifier]
@@ -47,15 +70,35 @@ class ViewController: NSViewController, NSTouchBarDelegate {
     //MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(LCU.shared)
         
         setupTouchBar()
-        print(LCU.shared)
         
         if LCU.shared.detected {
             detectingLabel.stringValue = "LoLClient detected"
         } else {
             detectingLabel.stringValue = "Couldn't detect LoLClient"
         }
+        
+        
+        let basic = "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())"
+        let login = "riot:\(LCU.shared.riotPassword ?? "")"
+        var request = URLRequest(url: URL(string: "https://127.0.0.1:\(LCU.shared.port ?? "")/")!)
+        request.timeoutInterval = 5
+        request.setValue(basic, forHTTPHeaderField: "Authorization")
+        print()
+        
+        //socket = WebSocket(url: URL(string: "wss://riot:\(LCU.shared.riotPassword ?? "")@127.0.0.1:\(LCU.shared.port ?? "")/")!)
+        //new WebSocket('wss://riot:oZXE0-JnjK3R2n-dtpJOGg@localhost:53811/', 'wamp');
+        socket = WebSocket(request: request, protocols: ["wamp"])
+        socket?.delegate = self
+        print(socket?.currentURL ?? "")
+        socket?.disableSSLCertValidation = true
+        //socket?.enabledSSLCipherSuites = [TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256]
+        
+        //socket?.request.headers = HTTPHeaders([HTTPHeader(name: "Authorization", value: "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())")])
+        socket?.connect()
+        print(socket?.isConnected ?? false)
     }
     
     //MARK: - Handlers
@@ -100,7 +143,17 @@ class ViewController: NSViewController, NSTouchBarDelegate {
     
     
     @IBAction func loadRunesToTouchBar(_ sender: Any) {
-        setTouchBarRunes(for: 517)
+        getChampionSelect()
+    }
+    
+    func getChampionSelect() {
+        RequestWrapper.requestGETURL(Constants.endpoints.getCurrentChampionSelect(withPort: LCU.shared.port ?? ""), success: { (JSONResponse) in
+            if let player = Mapper<MyTeam>().mapArray(JSONString: JSONResponse) {
+                print(player[0].summonerId ?? "Failed to download current champ select")
+            }
+        }, failure: { (error) in
+            print(error)
+        })
     }
     
     fileprivate func reloadTouchBar(_ touchBar: NSTouchBar) {

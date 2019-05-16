@@ -17,6 +17,9 @@ class LCU {
     var summonerId: Int?
     var summonerDisplayName: String?
     var detected = false
+    var port: String?
+    var port2: String?
+    var riotPassword: String?
     
     static let shared = LCU()
     
@@ -36,12 +39,16 @@ class LCU {
         }
         detected = true
         let credentials = lockfile.split(separator: ":")
-        let header = "Basic \("riot:\(credentials[3])".toBase64())"
+        port = String(credentials[2])
+        port2 = String(credentials[1])
+        riotPassword = "\(credentials[3])"
+        
+        let header = "Basic \("riot:\(riotPassword ?? "")".toBase64())"
         let acceptHeader = HTTPHeader(name: "Accept", value: "application/json")
         let headers = HTTPHeaders([HTTPHeader(name: "Authorization", value: header), acceptHeader])
         print(header)
         
-        RequestWrapper.requestGETURL(Constants.endpoints.getCurrentSummoner(withPort: String(credentials[2])), headers: headers, success: { (JSONResponse) in
+        RequestWrapper.requestGETURL(Constants.endpoints.getCurrentSummoner(withPort: port ?? ""), headers: headers, success: { (JSONResponse) in
             if let summoner = Mapper<CurrentSummoner>().map(JSONString: JSONResponse) {
                 guard let summonerId = summoner.summonerId else { return }
                 self.summonerId = summonerId
@@ -54,7 +61,7 @@ class LCU {
                 print("Successfully get current summoner")
             }
         }, failure: { (error) in
-            print("failed...")
+            print("failed.")
             print(error)
         })
     }
