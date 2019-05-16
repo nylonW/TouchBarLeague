@@ -15,12 +15,13 @@ import Alamofire
 import RxSwift
 import RxCocoa
 import Starscream
+import Swamp
 
 private let kSummonerNameIdentifier = NSTouchBarItem.Identifier("item.summonerName")
 private let kPandaIdentifier = NSTouchBarItem.Identifier("item.")
 private let kGroupIdentifier = NSTouchBarItem.Identifier("io.a2.Group")
 
-class ViewController: NSViewController, NSTouchBarDelegate, WebSocketDelegate {
+class ViewController: NSViewController, NSTouchBarDelegate, WebSocketDelegate, SwampSessionDelegate {
     
     func websocketDidConnect(socket: WebSocketClient) {
         print("WebSocket connected")
@@ -49,6 +50,7 @@ class ViewController: NSViewController, NSTouchBarDelegate, WebSocketDelegate {
     @IBOutlet weak var detectingLabel: NSTextField!
     
     var socket: WebSocket?
+    var swampSession: SwampSession?
     
     var currentTouchBarItem: NSCustomTouchBarItem?
     var groupTouchBar = NSTouchBar()
@@ -80,25 +82,32 @@ class ViewController: NSViewController, NSTouchBarDelegate, WebSocketDelegate {
             detectingLabel.stringValue = "Couldn't detect LoLClient"
         }
         
+        let swampTransport = WebSocketSwampTransport(wsEndpoint:  URL(string: "ws://my-router.com:8080/ws")!)
+        swampSession = SwampSession(realm: "router-defined-realm", transport: swampTransport)
+        // Set delegate for callbacks
+        swampSession?.delegate = self
+        swampSession?.connect()
         
-        let basic = "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())"
-        let login = "riot:\(LCU.shared.riotPassword ?? "")"
-        var request = URLRequest(url: URL(string: "wss://127.0.0.1:\(LCU.shared.port ?? "")/")!)
-        //request.timeoutInterval = 5
-        request.setValue(basic, forHTTPHeaderField: "Authorization")
-        print()
         
-        //socket = WebSocket(url: URL(string: "wss://riot:\(LCU.shared.riotPassword ?? "")@127.0.0.1:\(LCU.shared.port ?? "")/")!)
-        //new WebSocket('wss://riot:oZXE0-JnjK3R2n-dtpJOGg@localhost:53811/', 'wamp');
-        socket = WebSocket(request: request, protocols: ["wamp"])
-        socket?.delegate = self
-        print(socket?.currentURL ?? "")
-        socket?.disableSSLCertValidation = true
-        //socket?.enabledSSLCipherSuites = [TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256]
         
-        //socket?.request.headers = HTTPHeaders([HTTPHeader(name: "Authorization", value: "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())")])
-        socket?.connect()
-        print(socket?.isConnected ?? false)
+//        let basic = "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())"
+//        let login = "riot:\(LCU.shared.riotPassword ?? "")"
+//        var request = URLRequest(url: URL(string: "wss://127.0.0.1:\(LCU.shared.port ?? "")/")!)
+//        //request.timeoutInterval = 5
+//        request.setValue(basic, forHTTPHeaderField: "Authorization")
+//        print()
+//
+//        //socket = WebSocket(url: URL(string: "wss://riot:\(LCU.shared.riotPassword ?? "")@127.0.0.1:\(LCU.shared.port ?? "")/")!)
+//        //new WebSocket('wss://riot:oZXE0-JnjK3R2n-dtpJOGg@localhost:53811/', 'wamp');
+//        socket = WebSocket(request: request, protocols: ["wss"])
+//        socket?.delegate = self
+//        print(socket?.currentURL ?? "")
+//        socket?.disableSSLCertValidation = true
+//        //socket?.enabledSSLCipherSuites = [TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256]
+//
+//        //socket?.request.headers = HTTPHeaders([HTTPHeader(name: "Authorization", value: "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())")])
+//        socket?.connect()
+//        print(socket?.isConnected ?? false)
     }
     
     //MARK: - Handlers
