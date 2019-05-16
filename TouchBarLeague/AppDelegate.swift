@@ -25,5 +25,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     class func allowsAnyHTTPSCertificate(forHost host: String?) -> Bool {
         return true
     }
+    
+    @IBAction func quitAction(_ sender: Any) {
+        NSApplication.shared.terminate(self)
+    }
 }
 

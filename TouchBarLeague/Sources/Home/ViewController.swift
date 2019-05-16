@@ -65,7 +65,7 @@ class ViewController: NSViewController, NSTouchBarDelegate {
         
         let panda = NSCustomTouchBarItem(identifier: kPandaIdentifier)
         currentTouchBarItem = panda
-        panda.view = NSButton(title: "🤬", target: self, action: #selector(self.present(_:)))
+        panda.view = NSButton(image: #imageLiteral(resourceName: "5005"), target: self, action: #selector(self.present(_:)))
         NSTouchBarItem.addSystemTrayItem(panda)
         
         DFRElementSetControlStripPresenceForIdentifier(kPandaIdentifier, true)
@@ -83,12 +83,9 @@ class ViewController: NSViewController, NSTouchBarDelegate {
             return panda
         } else {
             let perkButton = NSCustomTouchBarItem(identifier: identifier)
-            perkButton.view = NSButton(title: "\(identifier.rawValue)", target: self, action: #selector(self.bear(_:)))
-            let imageview = NSImageView()
-            imageview.image = NSImage(named: "\(identifier.rawValue)")?.resized(to: CGSize(width: 30, height: 30))
-            imageview.frame.size.width = 30
-            imageview.frame.size.height = 30
-            perkButton.view = imageview
+            let button = NSButton(title: "", target: self, action: #selector(self.bear(_:)))
+            button.image = NSImage(named: "\(identifier.rawValue)")?.resized(to: CGSize(width: 30, height: 30))
+            perkButton.view = button
             return perkButton
         }
     }
@@ -98,11 +95,7 @@ class ViewController: NSViewController, NSTouchBarDelegate {
     }
     
     @objc func present(_ sender: Any?) {
-        if #available(macOS 10.14, *) {
-            NSTouchBar.presentSystemModalTouchBar(self.groupTouchBarA, systemTrayItemIdentifier: kPandaIdentifier)
-        } else {
-            NSTouchBar.presentSystemModalFunctionBar(self.groupTouchBarA, systemTrayItemIdentifier: kPandaIdentifier)
-        }
+        setTouchBarRunes(for: 517)
     }
     
     
