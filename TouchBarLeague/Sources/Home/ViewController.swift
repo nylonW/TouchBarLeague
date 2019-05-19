@@ -16,35 +16,43 @@ import RxSwift
 import RxCocoa
 import Starscream
 import Swamp
+import SocketRocket
 
 private let kSummonerNameIdentifier = NSTouchBarItem.Identifier("item.summonerName")
 private let kPandaIdentifier = NSTouchBarItem.Identifier("item.")
 private let kGroupIdentifier = NSTouchBarItem.Identifier("io.a2.Group")
 
-class ViewController: NSViewController, NSTouchBarDelegate, WebSocketDelegate, SwampSessionDelegate {
+class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate {
     
-    func websocketDidConnect(socket: WebSocketClient) {
-        print("WebSocket connected")
+    var socketrocket: SRWebSocket?
+    
+    func webSocket(_ webSocket: SRWebSocket!, didReceiveMessage message: Any!) {
+        if let mess = message {
+            print(mess)
+        }
+    }
+    func webSocket(_ webSocket: SRWebSocket!, didReceivePong pongPayload: Data!) {
+        print(pongPayload)
+        print("pomn")
     }
     
-    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        print("WebSocket disconnected")
+    
+    
+    func webSocket(_ webSocket: SRWebSocket!, didFailWithError error: Error!) {
         print(error)
-
+        print("fail")
     }
     
-    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        print("WebSocket receives a message")
-        print(text)
-
+    func webSocketDidOpen(_ webSocket: SRWebSocket!) {
+        print("open")
+        socketrocket?.send("[5, \"OnJsonApiEvent\"]")
     }
     
-    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        print("WebSocket receives a data")
-
+    func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
+        print(reason)
+        print("reason")
     }
     
-
     //MARK: - Properties
     
     @IBOutlet weak var detectingLabel: NSTextField!
@@ -82,34 +90,23 @@ class ViewController: NSViewController, NSTouchBarDelegate, WebSocketDelegate, S
             detectingLabel.stringValue = "Couldn't detect LoLClient"
         }
         
-        let swampTransport = WebSocketSwampTransport(wsEndpoint:  URL(string: "ws://my-router.com:8080/ws")!)
-        swampSession = SwampSession(realm: "router-defined-realm", transport: swampTransport)
-        // Set delegate for callbacks
-        swampSession?.delegate = self
-        swampSession?.connect()
         
-        
-        
-//        let basic = "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())"
-//        let login = "riot:\(LCU.shared.riotPassword ?? "")"
-//        var request = URLRequest(url: URL(string: "wss://127.0.0.1:\(LCU.shared.port ?? "")/")!)
-//        //request.timeoutInterval = 5
-//        request.setValue(basic, forHTTPHeaderField: "Authorization")
-//        print()
-//
-//        //socket = WebSocket(url: URL(string: "wss://riot:\(LCU.shared.riotPassword ?? "")@127.0.0.1:\(LCU.shared.port ?? "")/")!)
-//        //new WebSocket('wss://riot:oZXE0-JnjK3R2n-dtpJOGg@localhost:53811/', 'wamp');
-//        socket = WebSocket(request: request, protocols: ["wss"])
-//        socket?.delegate = self
-//        print(socket?.currentURL ?? "")
-//        socket?.disableSSLCertValidation = true
-//        //socket?.enabledSSLCipherSuites = [TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256]
-//
-//        //socket?.request.headers = HTTPHeaders([HTTPHeader(name: "Authorization", value: "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())")])
-//        socket?.connect()
-//        print(socket?.isConnected ?? false)
-    }
+                let basic = "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())"
+                let login = "riot:\(LCU.shared.riotPassword ?? "")"
+                var request = URLRequest(url: URL(string: "wss://127.0.0.1:\(LCU.shared.port ?? "")/")!)
+                //request.timeoutInterval = 5
+                request.setValue(basic, forHTTPHeaderField: "Authorization")
     
+
+        print(swampSession?.isConnected())
+        
+        var requestSR = URLRequest(url: URL(string: "wss://riot:\(LCU.shared.riotPassword ?? "")@127.0.0.1:\(LCU.shared.port ?? "")/")!)
+        requestSR.setValue(basic, forHTTPHeaderField: "Authorization")
+        socketrocket = SRWebSocket(urlRequest: requestSR, protocols: ["wamp", "https"], allowsUntrustedSSLCertificates: true)
+        socketrocket?.delegate = self
+        socketrocket?.open()
+        
+    }
     //MARK: - Handlers
   
     fileprivate func setupTouchBar() {
@@ -123,7 +120,7 @@ class ViewController: NSViewController, NSTouchBarDelegate, WebSocketDelegate, S
         DFRElementSetControlStripPresenceForIdentifier(kPandaIdentifier, true)
     }
     //        NSTouchBarItem.removeSystemTrayItem(currentTouchBarItem)
-
+   
     func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
         if identifier == kSummonerNameIdentifier {
             let bear = NSCustomTouchBarItem(identifier: kSummonerNameIdentifier)
