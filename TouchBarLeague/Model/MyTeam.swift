@@ -13,6 +13,8 @@ class MyTeam: Mappable {
     
     var summonerId: Int?
     var championId: Int?
+    var cellId: Int?
+    var team: Int?
     
     required init?(map: Map) {
         
@@ -21,5 +23,7 @@ class MyTeam: Mappable {
     func mapping(map: Map) {
         championId <- map["championId"]
         summonerId <- map["summonerId"]
+        cellId <- map["cellId"]
+        team <- map["team"]
     }
 }

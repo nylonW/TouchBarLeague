@@ -9,6 +9,11 @@
 import Foundation
 
 class Constants {
+    
+    struct lolConstants {
+        public static let lolVersion = "9.10.1"
+    }
+    
     struct endpoints {
         public static func getCurrentSummoner(withPort port: String) -> String {
             return "https://127.0.0.1:\(port)/lol-summoner/v1/current-summoner"

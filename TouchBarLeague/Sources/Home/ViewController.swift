@@ -14,9 +14,9 @@ import ObjectMapper
 import Alamofire
 import RxSwift
 import RxCocoa
-import Starscream
-import Swamp
 import SocketRocket
+import SwiftyJSON
+import Kingfisher
 
 private let kSummonerNameIdentifier = NSTouchBarItem.Identifier("item.summonerName")
 private let kPandaIdentifier = NSTouchBarItem.Identifier("item.")
@@ -28,7 +28,8 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     
     func webSocket(_ webSocket: SRWebSocket!, didReceiveMessage message: Any!) {
         if let mess = message {
-            print(mess)
+            //print(mess)
+            getChampionSelect()
         }
     }
     func webSocket(_ webSocket: SRWebSocket!, didReceivePong pongPayload: Data!) {
@@ -45,7 +46,8 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     
     func webSocketDidOpen(_ webSocket: SRWebSocket!) {
         print("open")
-        socketrocket?.send("[5, \"OnJsonApiEvent\"]")
+        socketrocket?.send("[5, \"OnJsonApiEvent_lol-champ-select_v1_current-champion\"]")
+        socketrocket?.send("[5, \"OnJsonApiEvent_lol-champ-select_v1_session\"]")
     }
     
     func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
@@ -57,18 +59,16 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     
     @IBOutlet weak var detectingLabel: NSTextField!
     
-    var socket: WebSocket?
-    var swampSession: SwampSession?
-    
+    let pickedChampion: BehaviorRelay<Int> = BehaviorRelay(value : 0)
+    let disposeBag = DisposeBag()
     var currentTouchBarItem: NSCustomTouchBarItem?
     var groupTouchBar = NSTouchBar()
     var groupTouchBarA: NSTouchBar {
         let groupTouchBar = NSTouchBar()
         groupTouchBar.defaultItemIdentifiers = [kSummonerNameIdentifier, kPandaIdentifier]
         groupTouchBar.delegate = self
-        self.groupTouchBar = groupTouchBar
         
-        return self.groupTouchBar
+        return groupTouchBar
     }
     
     override var representedObject: Any? {
@@ -84,22 +84,22 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
         
         setupTouchBar()
         
+        pickedChampion.asObservable().debounce(.milliseconds(200), scheduler: MainScheduler.instance).subscribe(onNext: {_ in
+            print(self.pickedChampion.value)
+            if self.pickedChampion.value > 0 {
+                self.setTouchBarRunes(for: self.pickedChampion.value)
+                let tbButton = self.currentTouchBarItem?.view as? NSButton
+                tbButton?.kf.setImage(with: URL(string: "https://ddragon.leagueoflegends.com/cdn/\(Constants.lolConstants.lolVersion)/img/champion/\(ChampionHelper.getChampionName(by: self.pickedChampion.value)).png"))
+            }
+        }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: disposeBag)
+        
         if LCU.shared.detected {
             detectingLabel.stringValue = "LoLClient detected"
         } else {
             detectingLabel.stringValue = "Couldn't detect LoLClient"
         }
         
-        
-                let basic = "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())"
-                let login = "riot:\(LCU.shared.riotPassword ?? "")"
-                var request = URLRequest(url: URL(string: "wss://127.0.0.1:\(LCU.shared.port ?? "")/")!)
-                //request.timeoutInterval = 5
-                request.setValue(basic, forHTTPHeaderField: "Authorization")
-    
-
-        print(swampSession?.isConnected())
-        
+        let basic = "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())"
         var requestSR = URLRequest(url: URL(string: "wss://riot:\(LCU.shared.riotPassword ?? "")@127.0.0.1:\(LCU.shared.port ?? "")/")!)
         requestSR.setValue(basic, forHTTPHeaderField: "Authorization")
         socketrocket = SRWebSocket(urlRequest: requestSR, protocols: ["wamp", "https"], allowsUntrustedSSLCertificates: true)
@@ -113,8 +113,8 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
         DFRSystemModalShowsCloseBoxWhenFrontMost(true)
         
         let panda = NSCustomTouchBarItem(identifier: kPandaIdentifier)
-        currentTouchBarItem = panda
         panda.view = NSButton(image: #imageLiteral(resourceName: "5005"), target: self, action: #selector(self.present(_:)))
+        currentTouchBarItem = panda
         NSTouchBarItem.addSystemTrayItem(panda)
         
         DFRElementSetControlStripPresenceForIdentifier(kPandaIdentifier, true)
@@ -144,7 +144,9 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     }
     
     @objc func present(_ sender: Any?) {
-        setTouchBarRunes(for: 517)
+        if self.pickedChampion.value != 0  {
+            setTouchBarRunes(for: self.pickedChampion.value)
+        }
     }
     
     
@@ -153,9 +155,22 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     }
     
     func getChampionSelect() {
-        RequestWrapper.requestGETURL(Constants.endpoints.getCurrentChampionSelect(withPort: LCU.shared.port ?? ""), success: { (JSONResponse) in
-            if let player = Mapper<MyTeam>().mapArray(JSONString: JSONResponse) {
-                print(player[0].summonerId ?? "Failed to download current champ select")
+        let header = "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())"
+        let acceptHeader = HTTPHeader(name: "Accept", value: "application/json")
+        let headers = HTTPHeaders([HTTPHeader(name: "Authorization", value: header), acceptHeader])
+        RequestWrapper.requestGETURL(Constants.endpoints.getCurrentChampionSelect(withPort: LCU.shared.port ?? ""), headers: headers, success: { (JSONResponse) in
+            var response: JSON?
+            if let dataFromString = JSONResponse.data(using: .utf8, allowLossyConversion: false) {
+                response = try? JSON(data: dataFromString)
+            }
+            if let playerList = Mapper<MyTeam>().mapArray(JSONString: response?["myTeam"].rawString() ?? "") {
+                for player in playerList {
+                    if player.summonerId == LCU.shared.summonerId {
+                        if player.championId != self.pickedChampion.value {
+                            self.pickedChampion.accept(player.championId ?? 0)
+                        }
+                    }
+                }
             }
         }, failure: { (error) in
             print(error)
@@ -163,15 +178,19 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     }
     
     fileprivate func reloadTouchBar(_ touchBar: NSTouchBar) {
+        self.touchBar?.dismissSystemModal()
         if #available(OSX 10.14, *) {
             NSTouchBar.dismissSystemModalTouchBar(self.groupTouchBar)
         } else {
             NSTouchBar.dismissSystemModalFunctionBar(self.groupTouchBar)
         }
+        //NSTouchBarItem.removeSystemTrayItem(currentTouchBarItem)
+        self.groupTouchBar.dismissSystemModal()
+        self.groupTouchBar = touchBar
         if #available(macOS 10.14, *) {
-            NSTouchBar.presentSystemModalTouchBar(touchBar, systemTrayItemIdentifier: kPandaIdentifier)
+            NSTouchBar.presentSystemModalTouchBar(self.groupTouchBar, systemTrayItemIdentifier: kPandaIdentifier)
         } else {
-            NSTouchBar.presentSystemModalFunctionBar(touchBar, systemTrayItemIdentifier: kPandaIdentifier)
+            NSTouchBar.presentSystemModalFunctionBar(self.groupTouchBar, systemTrayItemIdentifier: kPandaIdentifier)
         }
     }
     
@@ -194,9 +213,8 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
         
         groupTouchBar.defaultItemIdentifiers = perksIdentifiers
         groupTouchBar.delegate = self
-        self.groupTouchBar = groupTouchBar
         
-        return self.groupTouchBar
+        return groupTouchBar
     }
 }
 

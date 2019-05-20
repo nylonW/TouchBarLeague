@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.0.0-beta.6)
+  - Kingfisher (5.5.0)
   - ObjectMapper (3.4.2)
   - RxCocoa (5.0.0):
     - RxRelay (~> 5)
@@ -7,44 +8,39 @@ PODS:
   - RxRelay (5.0.0):
     - RxSwift (~> 5)
   - RxSwift (5.0.0)
-  - Socket.IO-Client-Swift (15.0.0):
-    - Starscream (~> 3.1)
   - SocketRocket (0.5.1)
-  - Starscream (3.1.0)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-beta.5)
+  - Kingfisher (~> 5.0)
   - ObjectMapper (~> 3.4)
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
-  - Socket.IO-Client-Swift (~> 15.0.0)
   - SocketRocket
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Kingfisher
     - ObjectMapper
     - RxCocoa
     - RxRelay
     - RxSwift
-    - Socket.IO-Client-Swift
     - SocketRocket
-    - Starscream
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
+  Kingfisher: 6fe5e67a90fd335e49b0f5c075ff55ac5ebedd94
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
-  Socket.IO-Client-Swift: c039a808195d22a7192962841b8c035cb61ea49e
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
-  Starscream: 08172b481e145289c4930cb567230fb55897cfa4
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 286bb6181d2f01193246e1ad7e17c7b20546c3d6
+PODFILE CHECKSUM: 66f85c6726a19f0931c60342e5f65246b72f3218
 
 COCOAPODS: 1.6.1

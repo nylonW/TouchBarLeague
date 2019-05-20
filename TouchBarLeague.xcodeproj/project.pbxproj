@@ -8,10 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		850675BE228CD37100E7E9C8 /* Collection+Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850675BD228CD37100E7E9C8 /* Collection+Extenstions.swift */; };
-		852F02DD228F23B600380CFA /* Swamp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 852F02DC228F23B600380CFA /* Swamp.framework */; };
-		852F02DE228F23B600380CFA /* Swamp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 852F02DC228F23B600380CFA /* Swamp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		852F02E2228F23EF00380CFA /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 852F02E1228F23EF00380CFA /* CryptoSwift.framework */; };
-		852F02E3228F23EF00380CFA /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 852F02E1228F23EF00380CFA /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		85252C982292BBF40085F924 /* ChampionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85252C972292BBF40085F924 /* ChampionHelper.swift */; };
 		85408AA3228B4D3100B958D7 /* TouchBarHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */; };
 		85818BEE22899FD600E70642 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818BED22899FD600E70642 /* AppDelegate.swift */; };
 		85818BF022899FD600E70642 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818BEF22899FD600E70642 /* ViewController.swift */; };
@@ -57,9 +54,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				852F02E3228F23EF00380CFA /* CryptoSwift.framework in Embed Frameworks */,
 				8593C6A8228B53BB00F4AA75 /* TouchBarHelper.framework in Embed Frameworks */,
-				852F02DE228F23B600380CFA /* Swamp.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,8 +68,7 @@
 		59BC088CBA89587605E70875 /* Pods_TouchBarLeague.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TouchBarLeague.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7473325D1F777D00A603B5F1 /* Pods_TouchBarLeagueUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TouchBarLeagueUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		850675BD228CD37100E7E9C8 /* Collection+Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extenstions.swift"; sourceTree = "<group>"; };
-		852F02DC228F23B600380CFA /* Swamp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swamp.framework; path = Pods/Swamp.framework; sourceTree = "<group>"; };
-		852F02E1228F23EF00380CFA /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Pods/CryptoSwift.framework; sourceTree = "<group>"; };
+		85252C972292BBF40085F924 /* ChampionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionHelper.swift; sourceTree = "<group>"; };
 		85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TouchBarHelper.framework; path = System/Library/PrivateFrameworks/TouchBarHelper.framework; sourceTree = SDKROOT; };
 		85818BEA22899FD600E70642 /* TouchBarLeague.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchBarLeague.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85818BED22899FD600E70642 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,8 +104,6 @@
 				8593C6A7228B53BB00F4AA75 /* TouchBarHelper.framework in Frameworks */,
 				85408AA3228B4D3100B958D7 /* TouchBarHelper.framework in Frameworks */,
 				B2ECE158D508B9EF7F23713D /* Pods_TouchBarLeague.framework in Frameworks */,
-				852F02E2228F23EF00380CFA /* CryptoSwift.framework in Frameworks */,
-				852F02DD228F23B600380CFA /* Swamp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,8 +153,6 @@
 		85818BE122899FD600E70642 = {
 			isa = PBXGroup;
 			children = (
-				852F02E1228F23EF00380CFA /* CryptoSwift.framework */,
-				852F02DC228F23B600380CFA /* Swamp.framework */,
 				85818BEC22899FD600E70642 /* TouchBarLeague */,
 				85818BFF22899FD700E70642 /* TouchBarLeagueTests */,
 				85818C0A22899FD700E70642 /* TouchBarLeagueUITests */,
@@ -238,6 +228,7 @@
 			children = (
 				8593C6B4228B742A00F4AA75 /* String+Extensions.swift */,
 				850675BD228CD37100E7E9C8 /* Collection+Extenstions.swift */,
+				85252C972292BBF40085F924 /* ChampionHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -423,13 +414,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-TouchBarLeague/Pods-TouchBarLeague-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -437,13 +427,12 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,6 +517,7 @@
 				8593C6B8228B78A900F4AA75 /* RequestWrapper.swift in Sources */,
 				8582ED44228D82D800F0049A /* MyTeam.swift in Sources */,
 				85818BF022899FD600E70642 /* ViewController.swift in Sources */,
+				85252C982292BBF40085F924 /* ChampionHelper.swift in Sources */,
 				8593C6B5228B742A00F4AA75 /* String+Extensions.swift in Sources */,
 				85818BEE22899FD600E70642 /* AppDelegate.swift in Sources */,
 				8593C6BF228C86DB00F4AA75 /* LCU.swift in Sources */,

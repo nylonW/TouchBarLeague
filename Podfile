@@ -11,8 +11,8 @@ target 'TouchBarLeague' do
   pod 'ObjectMapper', '~> 3.4'
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
-  pod 'Socket.IO-Client-Swift', '~> 15.0.0'
   pod 'SocketRocket'
+  pod 'Kingfisher', '~> 5.0'
 
   target 'TouchBarLeagueTests' do
     inherit! :search_paths
