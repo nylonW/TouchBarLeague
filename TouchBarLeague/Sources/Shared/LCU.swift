@@ -44,6 +44,10 @@ class LCU {
         port2 = String(credentials[1])
         riotPassword = "\(credentials[3])"
         
+        loadSummoner()
+    }
+    
+    func loadSummoner() {
         let header = "Basic \("riot:\(riotPassword ?? "")".toBase64())"
         let acceptHeader = HTTPHeader(name: "Accept", value: "application/json")
         let headers = HTTPHeaders([HTTPHeader(name: "Authorization", value: header), acceptHeader])

@@ -40,7 +40,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="TouchBar League" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -73,30 +73,20 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9t5-1P-eLl">
-                                <rect key="frame" x="45" y="222" width="108" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="96" id="bQ6-8I-Wfe"/>
-                                </constraints>
-                                <buttonCell key="cell" type="push" title="Load runes" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="93U-kU-lE1">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <connections>
-                                        <action selector="loadRunesToTouchBar:" target="XfG-lQ-9wD" id="CEe-vi-krS"/>
-                                    </connections>
-                                </buttonCell>
-                            </button>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="N9F-am-p6v">
+                                <rect key="frame" x="260" y="209" width="16" height="16"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="N9F-am-p6v" firstAttribute="top" secondItem="GxM-aj-KXp" secondAttribute="bottom" constant="8" id="0Mh-j4-emp"/>
                             <constraint firstItem="GxM-aj-KXp" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="0hz-LA-ydj"/>
                             <constraint firstItem="GxM-aj-KXp" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="1H2-aV-z6i"/>
-                            <constraint firstItem="9t5-1P-eLl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="51" id="8lQ-XD-dVY"/>
-                            <constraint firstItem="GxM-aj-KXp" firstAttribute="leading" secondItem="9t5-1P-eLl" secondAttribute="trailing" constant="61" id="Yq3-V8-29d"/>
-                            <constraint firstItem="9t5-1P-eLl" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="ex7-pj-zHq"/>
+                            <constraint firstItem="N9F-am-p6v" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="uJK-CR-oZJ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="detectingLabel" destination="GxM-aj-KXp" id="63r-Ne-o6L"/>
+                        <outlet property="scanProgressIndicator" destination="N9F-am-p6v" id="0Hl-uB-isK"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

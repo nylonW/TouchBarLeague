@@ -27,6 +27,7 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     //MARK: - Properties
     
     @IBOutlet weak var detectingLabel: NSTextField!
+    @IBOutlet weak var scanProgressIndicator: NSProgressIndicator!
     
     var socketrocket: SRWebSocket?
     fileprivate var viewModel: ViewModel!
@@ -57,16 +58,23 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
         setupTouchBar()
         setupWebSocket()
         setupViews()
+        
+        scanForLeague()
     }
-    //MARK: - Handlers
     
+    //MARK: - Handlers
     func setupViews() {
         
         LCU.shared.detected.asObservable().subscribe(onNext: { _ in
             if LCU.shared.detected.value {
-                self.detectingLabel.stringValue = "LoLClient detected"
+                DispatchQueue.main.async {
+                    self.detectingLabel.stringValue = "LoLClient detected"
+                    self.scanProgressIndicator.isHidden = true
+                }
             } else {
-                self.detectingLabel.stringValue = "Couldn't detect LoLClient"
+                self.detectingLabel.stringValue = "Scanning for LoLClient"
+                self.scanProgressIndicator.isHidden = false
+                self.scanProgressIndicator.startAnimation(nil)
             }
         }).disposed(by: disposeBag)
         
@@ -77,7 +85,7 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
                 let tbButton = self.currentTouchBarItem?.view as? NSButton
                 tbButton?.kf.setImage(with: URL(string: "https://ddragon.leagueoflegends.com/cdn/\(Constants.lolConstants.lolVersion)/img/champion/\(ChampionHelper.getChampionName(by: self.pickedChampion.value)).png"))
             }
-        }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
     }
     
     func setupWebSocket() {
@@ -102,14 +110,14 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
    
     func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
         let perkButton = NSCustomTouchBarItem(identifier: identifier)
-        let button = NSButton(title: "", target: self, action: #selector(self.bear(_:)))
+        let button = NSButton(title: "", target: self, action: #selector(self.perkButton(_:)))
         button.image = NSImage(named: "\(identifier.rawValue)")?.resized(to: CGSize(width: 30, height: 30))
         perkButton.view = button
         
         return perkButton
     }
     
-    @objc func bear(_ sender: Any?) {
+    @objc func perkButton(_ sender: Any?) {
         print("First button clicked")
     }
     
@@ -117,11 +125,6 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
         if self.pickedChampion.value != 0  {
             setTouchBarRunes(for: self.pickedChampion.value)
         }
-    }
-    
-    
-    @IBAction func loadRunesToTouchBar(_ sender: Any) {
-        getChampionSelect()
     }
     
     func getChampionSelect() {
@@ -202,6 +205,17 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
         print(reason)
         LCU.shared.detected.accept(false)
+        
+        scanForLeague()
+    }
+    
+    func scanForLeague() {
+        DispatchQueue.global(qos: .background).async {
+            while (!LCU.shared.detected.value) {
+                LCU.shared.authenticateLcu()
+                sleep(2)
+            }
+        }
     }
 }
 
