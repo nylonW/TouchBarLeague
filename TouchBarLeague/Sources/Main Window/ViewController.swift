@@ -131,7 +131,10 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
         let header = "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())"
         let acceptHeader = HTTPHeader(name: "Accept", value: "application/json")
         let headers = HTTPHeaders([HTTPHeader(name: "Authorization", value: header), acceptHeader])
-        RequestWrapper.requestGETURL(Constants.endpoints.getCurrentChampionSelect(withPort: LCU.shared.port ?? ""), headers: headers, success: { (JSONResponse) in
+        
+        guard let port = LCU.shared.port else { return }
+        
+        RequestWrapper.requestGETURL(Constants.endpoints.getCurrentChampionSelect(withPort: port), headers: headers, success: { (JSONResponse) in
             var response: JSON?
             if let dataFromString = JSONResponse.data(using: .utf8, allowLossyConversion: false) {
                 response = try? JSON(data: dataFromString)
@@ -139,25 +142,21 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
             if let playerList = Mapper<MyTeam>().mapArray(JSONString: response?["myTeam"].rawString() ?? "") {
                 for player in playerList {
                     if player.summonerId == LCU.shared.summonerId {
-                        if player.championId != self.pickedChampion.value {
-                            self.pickedChampion.accept(player.championId ?? 0)
+                        if let championId = player.championId {
+                            if championId != self.pickedChampion.value {
+                                self.pickedChampion.accept(championId)
+                            }
                         }
                     }
                 }
             }
         }, failure: { (error) in
+            print("Failed to get current champion select")
             print(error)
         })
     }
     
     fileprivate func reloadTouchBar(_ touchBar: NSTouchBar) {
-        self.touchBar?.dismissSystemModal()
-        if #available(OSX 10.14, *) {
-            NSTouchBar.dismissSystemModalTouchBar(self.groupTouchBar)
-        } else {
-            NSTouchBar.dismissSystemModalFunctionBar(self.groupTouchBar)
-        }
-        //NSTouchBarItem.removeSystemTrayItem(currentTouchBarItem)
         self.groupTouchBar.dismissSystemModal()
         self.groupTouchBar = touchBar
         if #available(macOS 10.14, *) {
@@ -218,4 +217,3 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
         }
     }
 }
-
