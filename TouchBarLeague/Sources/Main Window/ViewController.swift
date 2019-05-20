@@ -128,11 +128,11 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     }
     
     func getChampionSelect() {
-        let header = "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())"
-        let acceptHeader = HTTPHeader(name: "Accept", value: "application/json")
-        let headers = HTTPHeaders([HTTPHeader(name: "Authorization", value: header), acceptHeader])
-        
+        guard let password = LCU.shared.riotPassword else { return }
         guard let port = LCU.shared.port else { return }
+        
+        let header = "Basic \("riot:\(password)".toBase64())"
+        let headers = HTTPHeaders([HTTPHeader(name: "Authorization", value: header)])
         
         RequestWrapper.requestGETURL(Constants.endpoints.getCurrentChampionSelect(withPort: port), headers: headers, success: { (JSONResponse) in
             var response: JSON?
