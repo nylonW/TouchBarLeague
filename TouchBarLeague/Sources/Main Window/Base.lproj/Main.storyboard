@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -76,6 +75,9 @@
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9t5-1P-eLl">
                                 <rect key="frame" x="45" y="222" width="108" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="bQ6-8I-Wfe"/>
+                                </constraints>
                                 <buttonCell key="cell" type="push" title="Load runes" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="93U-kU-lE1">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -88,7 +90,7 @@
                         <constraints>
                             <constraint firstItem="GxM-aj-KXp" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="0hz-LA-ydj"/>
                             <constraint firstItem="GxM-aj-KXp" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="1H2-aV-z6i"/>
-                            <constraint firstItem="9t5-1P-eLl" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="51" id="8lQ-XD-dVY"/>
+                            <constraint firstItem="9t5-1P-eLl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="51" id="8lQ-XD-dVY"/>
                             <constraint firstItem="GxM-aj-KXp" firstAttribute="leading" secondItem="9t5-1P-eLl" secondAttribute="trailing" constant="61" id="Yq3-V8-29d"/>
                             <constraint firstItem="9t5-1P-eLl" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="ex7-pj-zHq"/>
                         </constraints>

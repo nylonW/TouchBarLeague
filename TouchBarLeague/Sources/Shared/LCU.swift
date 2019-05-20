@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import ObjectMapper
+import RxCocoa
 
 class LCU {
     
@@ -16,7 +17,7 @@ class LCU {
     var lolPath: String?
     var summonerId: Int?
     var summonerDisplayName: String?
-    var detected = false
+    let detected: BehaviorRelay<Bool> = BehaviorRelay(value : false)
     var port: String?
     var port2: String?
     var riotPassword: String?
@@ -37,7 +38,7 @@ class LCU {
         if lockfile == "" {
             return
         }
-        detected = true
+        detected.accept(true)
         let credentials = lockfile.split(separator: ":")
         port = String(credentials[2])
         port2 = String(credentials[1])

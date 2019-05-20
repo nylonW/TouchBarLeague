@@ -24,43 +24,15 @@ private let kGroupIdentifier = NSTouchBarItem.Identifier("io.a2.Group")
 
 class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate {
     
-    var socketrocket: SRWebSocket?
-    
-    func webSocket(_ webSocket: SRWebSocket!, didReceiveMessage message: Any!) {
-        if let mess = message {
-            //print(mess)
-            getChampionSelect()
-        }
-    }
-    func webSocket(_ webSocket: SRWebSocket!, didReceivePong pongPayload: Data!) {
-        print(pongPayload)
-        print("pomn")
-    }
-    
-    
-    
-    func webSocket(_ webSocket: SRWebSocket!, didFailWithError error: Error!) {
-        print(error)
-        print("fail")
-    }
-    
-    func webSocketDidOpen(_ webSocket: SRWebSocket!) {
-        print("open")
-        socketrocket?.send("[5, \"OnJsonApiEvent_lol-champ-select_v1_current-champion\"]")
-        socketrocket?.send("[5, \"OnJsonApiEvent_lol-champ-select_v1_session\"]")
-    }
-    
-    func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
-        print(reason)
-        print("reason")
-    }
-    
     //MARK: - Properties
     
     @IBOutlet weak var detectingLabel: NSTextField!
     
+    var socketrocket: SRWebSocket?
+    fileprivate var viewModel: ViewModel!
+    fileprivate let disposeBag = DisposeBag()
     let pickedChampion: BehaviorRelay<Int> = BehaviorRelay(value : 0)
-    let disposeBag = DisposeBag()
+    
     var currentTouchBarItem: NSCustomTouchBarItem?
     var groupTouchBar = NSTouchBar()
     var groupTouchBarA: NSTouchBar {
@@ -83,6 +55,20 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
         print(LCU.shared)
         
         setupTouchBar()
+        setupWebSocket()
+        setupViews()
+    }
+    //MARK: - Handlers
+    
+    func setupViews() {
+        
+        LCU.shared.detected.asObservable().subscribe(onNext: { _ in
+            if LCU.shared.detected.value {
+                self.detectingLabel.stringValue = "LoLClient detected"
+            } else {
+                self.detectingLabel.stringValue = "Couldn't detect LoLClient"
+            }
+        }).disposed(by: disposeBag)
         
         pickedChampion.asObservable().debounce(.milliseconds(200), scheduler: MainScheduler.instance).subscribe(onNext: {_ in
             print(self.pickedChampion.value)
@@ -92,22 +78,16 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
                 tbButton?.kf.setImage(with: URL(string: "https://ddragon.leagueoflegends.com/cdn/\(Constants.lolConstants.lolVersion)/img/champion/\(ChampionHelper.getChampionName(by: self.pickedChampion.value)).png"))
             }
         }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: disposeBag)
-        
-        if LCU.shared.detected {
-            detectingLabel.stringValue = "LoLClient detected"
-        } else {
-            detectingLabel.stringValue = "Couldn't detect LoLClient"
-        }
-        
+    }
+    
+    func setupWebSocket() {
         let basic = "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())"
         var requestSR = URLRequest(url: URL(string: "wss://riot:\(LCU.shared.riotPassword ?? "")@127.0.0.1:\(LCU.shared.port ?? "")/")!)
         requestSR.setValue(basic, forHTTPHeaderField: "Authorization")
         socketrocket = SRWebSocket(urlRequest: requestSR, protocols: ["wamp", "https"], allowsUntrustedSSLCertificates: true)
         socketrocket?.delegate = self
         socketrocket?.open()
-        
     }
-    //MARK: - Handlers
   
     fileprivate func setupTouchBar() {
         DFRSystemModalShowsCloseBoxWhenFrontMost(true)
@@ -119,24 +99,14 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
         
         DFRElementSetControlStripPresenceForIdentifier(kPandaIdentifier, true)
     }
-    //        NSTouchBarItem.removeSystemTrayItem(currentTouchBarItem)
    
     func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
-        if identifier == kSummonerNameIdentifier {
-            let bear = NSCustomTouchBarItem(identifier: kSummonerNameIdentifier)
-            bear.view = NSButton(title: LCU.shared.summonerDisplayName ?? "Login to league", target: self, action: #selector(self.bear(_:)))
-            return bear
-        } else if (identifier == kPandaIdentifier) {
-            let panda = NSCustomTouchBarItem(identifier: kPandaIdentifier)
-            panda.view = NSButton(title: "🥺", target: self, action: #selector(self.bear(_:)))
-            return panda
-        } else {
-            let perkButton = NSCustomTouchBarItem(identifier: identifier)
-            let button = NSButton(title: "", target: self, action: #selector(self.bear(_:)))
-            button.image = NSImage(named: "\(identifier.rawValue)")?.resized(to: CGSize(width: 30, height: 30))
-            perkButton.view = button
-            return perkButton
-        }
+        let perkButton = NSCustomTouchBarItem(identifier: identifier)
+        let button = NSButton(title: "", target: self, action: #selector(self.bear(_:)))
+        button.image = NSImage(named: "\(identifier.rawValue)")?.resized(to: CGSize(width: 30, height: 30))
+        perkButton.view = button
+        
+        return perkButton
     }
     
     @objc func bear(_ sender: Any?) {
@@ -215,6 +185,23 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
         groupTouchBar.delegate = self
         
         return groupTouchBar
+    }
+    
+    func webSocket(_ webSocket: SRWebSocket!, didReceiveMessage message: Any!) {
+        if message != nil {
+            getChampionSelect()
+        }
+    }
+    
+    func webSocketDidOpen(_ webSocket: SRWebSocket!) {
+        print("open")
+        socketrocket?.send("[5, \"OnJsonApiEvent_lol-champ-select_v1_current-champion\"]")
+        socketrocket?.send("[5, \"OnJsonApiEvent_lol-champ-select_v1_session\"]")
+    }
+    
+    func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
+        print(reason)
+        LCU.shared.detected.accept(false)
     }
 }
 

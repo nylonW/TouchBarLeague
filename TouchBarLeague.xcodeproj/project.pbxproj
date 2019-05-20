@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		850675BE228CD37100E7E9C8 /* Collection+Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850675BD228CD37100E7E9C8 /* Collection+Extenstions.swift */; };
 		85252C982292BBF40085F924 /* ChampionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85252C972292BBF40085F924 /* ChampionHelper.swift */; };
+		85252C9A2292C1FB0085F924 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85252C992292C1FB0085F924 /* ViewModel.swift */; };
 		85408AA3228B4D3100B958D7 /* TouchBarHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */; };
 		85818BEE22899FD600E70642 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818BED22899FD600E70642 /* AppDelegate.swift */; };
 		85818BF022899FD600E70642 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818BEF22899FD600E70642 /* ViewController.swift */; };
@@ -69,6 +70,7 @@
 		7473325D1F777D00A603B5F1 /* Pods_TouchBarLeagueUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TouchBarLeagueUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		850675BD228CD37100E7E9C8 /* Collection+Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extenstions.swift"; sourceTree = "<group>"; };
 		85252C972292BBF40085F924 /* ChampionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionHelper.swift; sourceTree = "<group>"; };
+		85252C992292C1FB0085F924 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TouchBarHelper.framework; path = System/Library/PrivateFrameworks/TouchBarHelper.framework; sourceTree = SDKROOT; };
 		85818BEA22899FD600E70642 /* TouchBarLeague.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchBarLeague.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85818BED22899FD600E70642 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -245,19 +247,20 @@
 			isa = PBXGroup;
 			children = (
 				8593C6BD228C86C800F4AA75 /* Shared */,
-				8593C6BC228C85DD00F4AA75 /* Home */,
+				8593C6BC228C85DD00F4AA75 /* Main Window */,
 				8593C6B6228B788F00F4AA75 /* Network */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		8593C6BC228C85DD00F4AA75 /* Home */ = {
+		8593C6BC228C85DD00F4AA75 /* Main Window */ = {
 			isa = PBXGroup;
 			children = (
 				85818BF322899FD700E70642 /* Main.storyboard */,
 				85818BEF22899FD600E70642 /* ViewController.swift */,
+				85252C992292C1FB0085F924 /* ViewModel.swift */,
 			);
-			path = Home;
+			path = "Main Window";
 			sourceTree = "<group>";
 		};
 		8593C6BD228C86C800F4AA75 /* Shared */ = {
@@ -523,6 +526,7 @@
 				8593C6BF228C86DB00F4AA75 /* LCU.swift in Sources */,
 				850675BE228CD37100E7E9C8 /* Collection+Extenstions.swift in Sources */,
 				8593C6AF228B6ED700F4AA75 /* CurrentSummoner.swift in Sources */,
+				85252C9A2292C1FB0085F924 /* ViewModel.swift in Sources */,
 				8593C6C1228CC6C900F4AA75 /* Champion1vs9.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
