@@ -25,7 +25,6 @@ private let kGroupIdentifier = NSTouchBarItem.Identifier("io.a2.Group")
 class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate {
     
     //MARK: - Properties
-    
     @IBOutlet weak var detectingLabel: NSTextField!
     @IBOutlet weak var scanProgressIndicator: NSProgressIndicator!
     
@@ -36,12 +35,6 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     
     var currentTouchBarItem: NSCustomTouchBarItem?
     var groupTouchBar = NSTouchBar()
-    
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
     
     //MARK: - Init
     override func viewDidLoad() {
@@ -57,7 +50,6 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     
     //MARK: - Handlers
     func setupViews() {
-        
         LCU.shared.detected.asObservable().subscribe(onNext: { _ in
             if LCU.shared.detected.value {
                 DispatchQueue.main.async {
