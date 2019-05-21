@@ -29,5 +29,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func quitAction(_ sender: Any) {
         NSApplication.shared.terminate(self)
     }
+    
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return true
+    }
 }
 
