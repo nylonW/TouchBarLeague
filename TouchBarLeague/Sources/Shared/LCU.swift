@@ -19,7 +19,6 @@ class LCU {
     var summonerDisplayName: String?
     let detected: BehaviorRelay<Bool> = BehaviorRelay(value : false)
     var port: String?
-    var port2: String?
     var riotPassword: String?
     
     static let shared = LCU()
@@ -41,7 +40,6 @@ class LCU {
         detected.accept(true)
         let credentials = lockfile.split(separator: ":")
         port = String(credentials[2])
-        port2 = String(credentials[1])
         riotPassword = "\(credentials[3])"
         
         loadSummoner()
