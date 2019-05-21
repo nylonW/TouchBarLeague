@@ -41,7 +41,6 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
         print(LCU.shared)
         
         setupTouchBar()
-        setupWebSocket()
         setupViews()
         
         scanForLeague()
@@ -55,6 +54,7 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
                     self.detectingLabel.stringValue = "LoLClient detected"
                     self.scanProgressIndicator.isHidden = true
                 }
+                self.socketrocket = self.setupWebSocket()
             } else {
                 self.detectingLabel.stringValue = "Scanning for LoLClient"
                 self.scanProgressIndicator.isHidden = false
@@ -62,7 +62,7 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
             }
         }).disposed(by: disposeBag)
         
-        pickedChampion.asObservable().debounce(.milliseconds(200), scheduler: MainScheduler.instance).subscribe(onNext: {_ in
+        pickedChampion.asObservable().debounce(.milliseconds(200), scheduler: MainScheduler.instance).subscribe(onNext: { _ in
             print(self.pickedChampion.value)
             if self.pickedChampion.value > 0 {
                 self.setTouchBarRunes(for: self.pickedChampion.value)
@@ -72,15 +72,16 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
         }).disposed(by: disposeBag)
     }
     
-    func setupWebSocket() {
-        guard let password = LCU.shared.riotPassword else { return }
-        guard let port = LCU.shared.port else { return }
+    func setupWebSocket() -> SRWebSocket {
+        guard let password = LCU.shared.riotPassword else { return SRWebSocket() }
+        guard let port = LCU.shared.port else { return SRWebSocket() }
         let basic = "Basic \("riot:\(password)".toBase64())"
         var requestSR = URLRequest(url: URL(string: "wss://127.0.0.1:\(port)/")!)
         requestSR.setValue(basic, forHTTPHeaderField: "Authorization")
-        socketrocket = SRWebSocket(urlRequest: requestSR, protocols: ["wamp"], allowsUntrustedSSLCertificates: true)
-        socketrocket?.delegate = self
-        socketrocket?.open()
+        let webSocket = SRWebSocket(urlRequest: requestSR, protocols: ["wamp"], allowsUntrustedSSLCertificates: true)
+        webSocket?.delegate = self
+        webSocket?.open()
+        return webSocket ?? SRWebSocket()
     }
   
     fileprivate func setupTouchBar() {
@@ -125,7 +126,8 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
             if let dataFromString = JSONResponse.data(using: .utf8, allowLossyConversion: false) {
                 response = try? JSON(data: dataFromString)
             }
-            if let playerList = Mapper<MyTeam>().mapArray(JSONString: response?["myTeam"].rawString() ?? "") {
+            
+            if let playerList = Mapper<TeamParticipant>().mapArray(JSONString: response?["myTeam"].rawString() ?? "") {
                 for player in playerList {
                     if player.summonerId == LCU.shared.summonerId {
                         if let championId = player.championId {
@@ -176,22 +178,24 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     }
     
     func webSocket(_ webSocket: SRWebSocket!, didReceiveMessage message: Any!) {
-        if message != nil {
+        if "\(message ?? "")".contains("login/v1/session") && !"\(message ?? "")".contains("\"Delete\"") && !"\(message ?? "")".contains("\"accountId\":0") {
+            print("login")
+            LCU.shared.loadSummoner()
+            
+        } else if "\(message ?? "")".contains("/lol-champ-select/v1/session") {
             getChampionSelect()
         }
     }
     
     func webSocketDidOpen(_ webSocket: SRWebSocket!) {
         print("Open websocket")
-        socketrocket?.send("[5, \"OnJsonApiEvent_lol-champ-select_v1_current-champion\"]")
-        socketrocket?.send("[5, \"OnJsonApiEvent_lol-champ-select_v1_session\"]")
+        socketrocket?.send("[5, \"OnJsonApiEvent\"]")
     }
     
     func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
         if let reason = reason {
             print(reason)
         }
-        
         LCU.shared.detected.accept(false)
         scanForLeague()
     }

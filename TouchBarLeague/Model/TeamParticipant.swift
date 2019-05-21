@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-class MyTeam: Mappable {
+class TeamParticipant: Mappable {
     
     var summonerId: Int?
     var championId: Int?

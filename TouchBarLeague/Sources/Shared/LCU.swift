@@ -37,18 +37,19 @@ class LCU {
         if lockfile == "" {
             return
         }
-        detected.accept(true)
+        
         let credentials = lockfile.split(separator: ":")
         port = String(credentials[2])
         riotPassword = "\(credentials[3])"
+        detected.accept(true)
         
         loadSummoner()
     }
     
     func loadSummoner() {
-        let header = "Basic \("riot:\(riotPassword ?? "")".toBase64())"
-        let acceptHeader = HTTPHeader(name: "Accept", value: "application/json")
-        let headers = HTTPHeaders([HTTPHeader(name: "Authorization", value: header), acceptHeader])
+        guard let password = riotPassword else { return }
+        let header = "Basic \("riot:\(password)".toBase64())"
+        let headers = HTTPHeaders([HTTPHeader(name: "Authorization", value: header)])
         print(header)
         
         RequestWrapper.requestGETURL(Constants.endpoints.getCurrentSummoner(withPort: port ?? ""), headers: headers, success: { (JSONResponse) in
