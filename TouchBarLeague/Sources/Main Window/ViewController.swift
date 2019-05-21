@@ -19,13 +19,11 @@ import SwiftyJSON
 import Kingfisher
 
 private let kSummonerNameIdentifier = NSTouchBarItem.Identifier("item.summonerName")
-private let kPandaIdentifier = NSTouchBarItem.Identifier("item.")
-private let kGroupIdentifier = NSTouchBarItem.Identifier("io.a2.Group")
+private let leagueItemIdentifier = NSTouchBarItem.Identifier("item.league")
 
 class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate {
     
     //MARK: - Properties
-    
     @IBOutlet weak var detectingLabel: NSTextField!
     @IBOutlet weak var scanProgressIndicator: NSProgressIndicator!
     
@@ -36,19 +34,6 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     
     var currentTouchBarItem: NSCustomTouchBarItem?
     var groupTouchBar = NSTouchBar()
-    var groupTouchBarA: NSTouchBar {
-        let groupTouchBar = NSTouchBar()
-        groupTouchBar.defaultItemIdentifiers = [kSummonerNameIdentifier, kPandaIdentifier]
-        groupTouchBar.delegate = self
-        
-        return groupTouchBar
-    }
-    
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
     
     //MARK: - Init
     override func viewDidLoad() {
@@ -64,7 +49,6 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     
     //MARK: - Handlers
     func setupViews() {
-        
         LCU.shared.detected.asObservable().subscribe(onNext: { _ in
             if LCU.shared.detected.value {
                 DispatchQueue.main.async {
@@ -89,10 +73,12 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     }
     
     func setupWebSocket() {
-        let basic = "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())"
-        var requestSR = URLRequest(url: URL(string: "wss://riot:\(LCU.shared.riotPassword ?? "")@127.0.0.1:\(LCU.shared.port ?? "")/")!)
+        guard let password = LCU.shared.riotPassword else { return }
+        guard let port = LCU.shared.port else { return }
+        let basic = "Basic \("riot:\(password)".toBase64())"
+        var requestSR = URLRequest(url: URL(string: "wss://127.0.0.1:\(port)/")!)
         requestSR.setValue(basic, forHTTPHeaderField: "Authorization")
-        socketrocket = SRWebSocket(urlRequest: requestSR, protocols: ["wamp", "https"], allowsUntrustedSSLCertificates: true)
+        socketrocket = SRWebSocket(urlRequest: requestSR, protocols: ["wamp"], allowsUntrustedSSLCertificates: true)
         socketrocket?.delegate = self
         socketrocket?.open()
     }
@@ -100,12 +86,12 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     fileprivate func setupTouchBar() {
         DFRSystemModalShowsCloseBoxWhenFrontMost(true)
         
-        let panda = NSCustomTouchBarItem(identifier: kPandaIdentifier)
-        panda.view = NSButton(image: #imageLiteral(resourceName: "5005"), target: self, action: #selector(self.present(_:)))
-        currentTouchBarItem = panda
-        NSTouchBarItem.addSystemTrayItem(panda)
+        let leagueTouchBarItem = NSCustomTouchBarItem(identifier: leagueItemIdentifier)
+        leagueTouchBarItem.view = NSButton(image: #imageLiteral(resourceName: "5005"), target: self, action: #selector(self.present(_:)))
+        currentTouchBarItem = leagueTouchBarItem
+        NSTouchBarItem.addSystemTrayItem(leagueTouchBarItem)
         
-        DFRElementSetControlStripPresenceForIdentifier(kPandaIdentifier, true)
+        DFRElementSetControlStripPresenceForIdentifier(leagueItemIdentifier, true)
     }
    
     func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
@@ -118,7 +104,7 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     }
     
     @objc func perkButton(_ sender: Any?) {
-        print("First button clicked")
+        print("perk tapped")
     }
     
     @objc func present(_ sender: Any?) {
@@ -128,11 +114,11 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     }
     
     func getChampionSelect() {
-        let header = "Basic \("riot:\(LCU.shared.riotPassword ?? "")".toBase64())"
-        let acceptHeader = HTTPHeader(name: "Accept", value: "application/json")
-        let headers = HTTPHeaders([HTTPHeader(name: "Authorization", value: header), acceptHeader])
-        
+        guard let password = LCU.shared.riotPassword else { return }
         guard let port = LCU.shared.port else { return }
+        
+        let header = "Basic \("riot:\(password)".toBase64())"
+        let headers = HTTPHeaders([HTTPHeader(name: "Authorization", value: header)])
         
         RequestWrapper.requestGETURL(Constants.endpoints.getCurrentChampionSelect(withPort: port), headers: headers, success: { (JSONResponse) in
             var response: JSON?
@@ -160,9 +146,9 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
         self.groupTouchBar.dismissSystemModal()
         self.groupTouchBar = touchBar
         if #available(macOS 10.14, *) {
-            NSTouchBar.presentSystemModalTouchBar(self.groupTouchBar, systemTrayItemIdentifier: kPandaIdentifier)
+            NSTouchBar.presentSystemModalTouchBar(self.groupTouchBar, systemTrayItemIdentifier: leagueItemIdentifier)
         } else {
-            NSTouchBar.presentSystemModalFunctionBar(self.groupTouchBar, systemTrayItemIdentifier: kPandaIdentifier)
+            NSTouchBar.presentSystemModalFunctionBar(self.groupTouchBar, systemTrayItemIdentifier: leagueItemIdentifier)
         }
     }
     
@@ -182,7 +168,7 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
         let perks = runehash.split(separator: "-")
         
         let perksIdentifiers = perks.map { NSTouchBarItem.Identifier(String($0)) }.orderedSet
-        
+        print(perksIdentifiers.count)
         groupTouchBar.defaultItemIdentifiers = perksIdentifiers
         groupTouchBar.delegate = self
         
@@ -196,15 +182,17 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     }
     
     func webSocketDidOpen(_ webSocket: SRWebSocket!) {
-        print("open")
+        print("Open websocket")
         socketrocket?.send("[5, \"OnJsonApiEvent_lol-champ-select_v1_current-champion\"]")
         socketrocket?.send("[5, \"OnJsonApiEvent_lol-champ-select_v1_session\"]")
     }
     
     func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
-        print(reason)
-        LCU.shared.detected.accept(false)
+        if let reason = reason {
+            print(reason)
+        }
         
+        LCU.shared.detected.accept(false)
         scanForLeague()
     }
     
