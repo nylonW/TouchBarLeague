@@ -20,7 +20,6 @@ import Kingfisher
 
 private let kSummonerNameIdentifier = NSTouchBarItem.Identifier("item.summonerName")
 private let leagueItemIdentifier = NSTouchBarItem.Identifier("item.league")
-private let kGroupIdentifier = NSTouchBarItem.Identifier("io.a2.Group")
 
 class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate {
     
@@ -105,7 +104,7 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     }
     
     @objc func perkButton(_ sender: Any?) {
-        print("First button clicked")
+        print("perk tapped")
     }
     
     @objc func present(_ sender: Any?) {
