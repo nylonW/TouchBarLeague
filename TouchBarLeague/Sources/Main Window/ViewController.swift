@@ -111,6 +111,8 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
     @objc func present(_ sender: Any?) {
         if self.pickedChampion.value != 0  {
             setTouchBarRunes(for: self.pickedChampion.value)
+        } else if LCU.shared.summonerId != 0 {
+            
         }
     }
     
