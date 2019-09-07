@@ -29,8 +29,9 @@ class LCU {
     
   
     func authenticateLcu() {
-        lolPath = findLolPathCommand.shell()
-        lolPath = lolPath?.components(separatedBy: "/RADS")[0] ?? ""
+        //lolPath = findLolPathCommand.shell().split(separator: "\n"))
+        //lolPath = lolPath?.components(separatedBy: "/RADS")[0] ?? ""
+        lolPath = "/Applications/League of Legends.app/Contents/LoL"
         let lockfile = "head \"\(lolPath ?? "")/lockfile\"".shell()
         print(lockfile)
         

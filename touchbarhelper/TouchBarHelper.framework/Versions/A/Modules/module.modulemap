@@ -1,0 +1,4 @@
+framework module TouchBarHelper {
+  header "TouchBarHelper-Swift.h"
+  requires objc
+}

@@ -13,7 +13,7 @@ import TouchBarHelper
 import ObjectMapper
 import Alamofire
 import RxSwift
-import RxCocoa
+import RxCocoa
 import SocketRocket
 import SwiftyJSON
 import Kingfisher

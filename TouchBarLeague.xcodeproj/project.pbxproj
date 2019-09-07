@@ -10,7 +10,8 @@
 		850675BE228CD37100E7E9C8 /* Collection+Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850675BD228CD37100E7E9C8 /* Collection+Extenstions.swift */; };
 		85252C982292BBF40085F924 /* ChampionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85252C972292BBF40085F924 /* ChampionHelper.swift */; };
 		85252C9A2292C1FB0085F924 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85252C992292C1FB0085F924 /* ViewModel.swift */; };
-		85408AA3228B4D3100B958D7 /* TouchBarHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */; };
+		857237832324035300F9C6C9 /* TouchBarHelper.framework in Sources */ = {isa = PBXBuildFile; fileRef = 85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */; };
+		857237842324036600F9C6C9 /* TouchBarHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */; };
 		85818BEE22899FD600E70642 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818BED22899FD600E70642 /* AppDelegate.swift */; };
 		85818BF022899FD600E70642 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818BEF22899FD600E70642 /* ViewController.swift */; };
 		85818BF222899FD700E70642 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85818BF122899FD700E70642 /* Assets.xcassets */; };
@@ -18,7 +19,6 @@
 		85818C0122899FD700E70642 /* TouchBarLeagueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818C0022899FD700E70642 /* TouchBarLeagueTests.swift */; };
 		85818C0C22899FD700E70642 /* TouchBarLeagueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85818C0B22899FD700E70642 /* TouchBarLeagueUITests.swift */; };
 		8582ED44228D82D800F0049A /* TeamParticipant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8582ED43228D82D800F0049A /* TeamParticipant.swift */; };
-		8593C6A7228B53BB00F4AA75 /* TouchBarHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */; };
 		8593C6A8228B53BB00F4AA75 /* TouchBarHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85408AA2228B4D3100B958D7 /* TouchBarHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8593C6AF228B6ED700F4AA75 /* CurrentSummoner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593C6AE228B6ED700F4AA75 /* CurrentSummoner.swift */; };
 		8593C6B2228B6F5F00F4AA75 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593C6B1228B6F5F00F4AA75 /* Constants.swift */; };
@@ -103,8 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8593C6A7228B53BB00F4AA75 /* TouchBarHelper.framework in Frameworks */,
-				85408AA3228B4D3100B958D7 /* TouchBarHelper.framework in Frameworks */,
+				857237842324036600F9C6C9 /* TouchBarHelper.framework in Frameworks */,
 				B2ECE158D508B9EF7F23713D /* Pods_TouchBarLeague.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +515,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				857237832324035300F9C6C9 /* TouchBarHelper.framework in Sources */,
 				8593C6B2228B6F5F00F4AA75 /* Constants.swift in Sources */,
 				8593C6B8228B78A900F4AA75 /* RequestWrapper.swift in Sources */,
 				8582ED44228D82D800F0049A /* TeamParticipant.swift in Sources */,
@@ -708,7 +708,7 @@
 					"@executable_path/../Frameworks",
 					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/PrivateFrameworks,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nylon.TouchBarLeague;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -741,7 +741,7 @@
 					"@executable_path/../Frameworks",
 					/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/PrivateFrameworks,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nylon.TouchBarLeague;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
