@@ -11,7 +11,7 @@ import Foundation
 class Constants {
     
     struct lolConstants {
-        public static let lolVersion = "9.10.1"
+        public static let lolVersion = "9.17.1"
     }
     
     struct endpoints {
