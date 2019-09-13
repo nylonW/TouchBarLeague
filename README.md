@@ -1,6 +1,8 @@
 # TouchBarLeague
 MacOS TouchBar App for League of Legends using TouchBar private API and LCU API
 
+When you are in champion select, TouchBar will automatically show you rune set for picked champion.
+
 To build app, add file TouchBarHelper.framework to folder Xcode.app⁩ ▸ ⁨Contents⁩ ▸ ⁨Developer⁩ ▸ ⁨Platforms⁩ ▸ ⁨MacOSX.platform⁩ ▸ ⁨Developer⁩ ▸ ⁨SDKs⁩ ▸ ⁨MacOSX.sdk⁩ ▸ ⁨System⁩ ▸ ⁨Library⁩ ▸ ⁨PrivateFrameworks⁩
 
 ------
