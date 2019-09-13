@@ -1,7 +1,7 @@
 # TouchBarLeague
 MacOS TouchBar App for League of Legends using TouchBar private API and LCU API
 
-To build app add file TouchBarHelper.framework to folder Xcode.app⁩ ▸ ⁨Contents⁩ ▸ ⁨Developer⁩ ▸ ⁨Platforms⁩ ▸ ⁨MacOSX.platform⁩ ▸ ⁨Developer⁩ ▸ ⁨SDKs⁩ ▸ ⁨MacOSX.sdk⁩ ▸ ⁨System⁩ ▸ ⁨Library⁩ ▸ ⁨PrivateFrameworks⁩
+To build app, add file TouchBarHelper.framework to folder Xcode.app⁩ ▸ ⁨Contents⁩ ▸ ⁨Developer⁩ ▸ ⁨Platforms⁩ ▸ ⁨MacOSX.platform⁩ ▸ ⁨Developer⁩ ▸ ⁨SDKs⁩ ▸ ⁨MacOSX.sdk⁩ ▸ ⁨System⁩ ▸ ⁨Library⁩ ▸ ⁨PrivateFrameworks⁩
 
 ------
 ### Screenshots
