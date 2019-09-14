@@ -124,12 +124,11 @@ class ViewController: NSViewController, NSTouchBarDelegate, SRWebSocketDelegate 
         let headers = HTTPHeaders([HTTPHeader(name: "Authorization", value: header)])
         
         RequestWrapper.requestGETURL(Constants.endpoints.getCurrentChampionSelect(withPort: port), headers: headers, success: { (JSONResponse) in
-            var response: JSON?
-            if let dataFromString = JSONResponse.data(using: .utf8, allowLossyConversion: false) {
-                response = try? JSON(data: dataFromString)
-            }
             
-            if let playerList = Mapper<TeamParticipant>().mapArray(JSONString: response?["myTeam"].rawString() ?? "") {
+            guard let data = JSONResponse.data(using: .utf8, allowLossyConversion: false) else { return }
+            guard let response = try? JSON(data: data) else { return }
+            
+            if let playerList = Mapper<TeamParticipant>().mapArray(JSONString: response["myTeam"].rawString() ?? "") {
                 for player in playerList {
                     if player.summonerId == LCU.shared.summonerId {
                         if let championId = player.championId {
